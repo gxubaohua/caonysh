@@ -1,0 +1,11 @@
+[
+  {
+    "slug": "brass-washer",
+    "name": "Brass Washer",
+    "category": "",
+    "images": ["../assets/nylon-spacer.png"],
+    "description": "Soft brass washer for electrical contacts.",
+    "price": { "min": 0.03 },
+    "moq": 10000
+  }
+]

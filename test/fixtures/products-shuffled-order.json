@@ -1,0 +1,32 @@
+[
+  {
+    "slug": "nylon-spacer",
+    "name": "Nylon Spacer",
+    "category": "fasteners",
+    "images": ["../assets/nylon-spacer.png"],
+    "description": "Lightweight nylon spacer for electrical insulation and vibration damping.",
+    "price": null,
+    "moq": null,
+    "featured": false
+  },
+  {
+    "slug": "steel-ball-bearing",
+    "name": "Steel Ball Bearing",
+    "category": "bearings",
+    "images": ["../assets/steel-ball-bearing.png"],
+    "description": "Precision steel ball bearing for industrial machinery, sealed for long service life.",
+    "price": { "min": 1.2, "max": 1.5 },
+    "moq": 1000,
+    "featured": true,
+    "specs": { "Material": "Chrome steel (GCr15)", "Bore": "10 mm", "Seal": "2RS" }
+  },
+  {
+    "slug": "stainless-steel-hex-nut",
+    "name": "Stainless Steel Hex Nut",
+    "category": "fasteners",
+    "images": ["../assets/stainless-steel-hex-nut.png"],
+    "description": "Corrosion-resistant stainless steel hex nut, standard thread, sold by the carton.",
+    "price": { "min": 0.08 },
+    "moq": 5000
+  }
+]
