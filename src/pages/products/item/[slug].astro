@@ -1,0 +1,49 @@
+---
+// Product detail page: gallery, description, two-state price, MOQ, Specs
+// table, and an Inquiry button that links to the Contact page carrying the
+// product name as the Inquiry Prefill query parameter (GLOSSARY: Inquiry
+// Prefill; ADR-0003).
+import site from '../../../config/site.json';
+import { products, formatPrice } from '../../../lib/products';
+import ProductGallery from '../../../components/ProductGallery.astro';
+import SpecTable from '../../../components/SpecTable.astro';
+
+export function getStaticPaths() {
+  return products.map((product) => ({
+    params: { slug: product.slug },
+    props: { product },
+  }));
+}
+
+const { product } = Astro.props;
+
+// The Inquiry Prefill link target on the Contact page (built in ticket 06).
+const inquiryHref = `/contact?product=${encodeURIComponent(product.name)}`;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{product.name} | {site.companyName}</title>
+    <meta name="description" content={product.description} />
+  </head>
+  <body>
+    <header>
+      <a href="/">{site.companyName}</a>
+    </header>
+
+    <main>
+      <h1>{product.name}</h1>
+      <ProductGallery product={product} />
+      <p>{product.description}</p>
+      <p class="price">
+        {product.price === null ? 'Contact for price' : formatPrice(product.price)}
+      </p>
+      {product.moq != null && <p class="moq">MOQ: {product.moq.toLocaleString('en-US')}</p>}
+      <SpecTable product={product} />
+      <a class="inquiry-button" href={inquiryHref}>Send Inquiry</a>
+    </main>
+  </body>
+</html>
