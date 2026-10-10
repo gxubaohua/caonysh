@@ -6,6 +6,8 @@
 
 **Status:** ready-for-agent
 
+完整上下文（用户故事、测试决策、Out of Scope）见本 feature 目录下的 `../spec.md`。
+
 - [ ] 统一布局：导航在移动端可用（汉堡菜单或等价方案）
 - [ ] 页脚展示公司名与邮箱
 - [ ] Home 页展示 Featured Product（按 Product Config 文件顺序），无精选商品时该区不渲染

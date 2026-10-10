@@ -6,7 +6,10 @@
 
 **Status:** ready-for-agent
 
+完整上下文（用户故事、测试决策、Out of Scope）见本 feature 目录下的 `../spec.md`。
+
 - [ ] GitHub Actions workflow：push 到 main 自动 build + 部署 Pages
+- [ ] workflow 在每次 push 和 PR 上运行 typecheck 与测试；部署 job 仅在 main 分支上追加执行
 - [ ] workflow 中 Web3Forms access key 以 GitHub Secrets 注入，不出现在仓库明文
 - [ ] 整站冒烟测试：全部路由（Home/Products/分类/详情/About/Contact）build 成功且产物存在
 - [ ] README 简述本地开发、测试、部署三条命令

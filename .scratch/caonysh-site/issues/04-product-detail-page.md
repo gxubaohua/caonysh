@@ -6,6 +6,8 @@
 
 **Status:** ready-for-agent
 
+完整上下文（用户故事、测试决策、Out of Scope）见本 feature 目录下的 `../spec.md`。
+
 - [ ] 商品详情页有多图画廊可切换查看
 - [ ] 价格两态渲染：填了显示精确值/区间，没填显示 "Contact for price"
 - [ ] MOQ 配置了才显示

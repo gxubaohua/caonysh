@@ -6,6 +6,8 @@
 
 **Status:** ready-for-agent
 
+完整上下文（用户故事、测试决策、Out of Scope）见本 feature 目录下的 `../spec.md`。
+
 - [ ] 每个非空分类有独立 URL 的落地页，含该分类商品网格
 - [ ] 分类落地页渲染可选的 description 文案（配置了才显示）
 - [ ] Products 页有分类筛选，可切换查看各分类

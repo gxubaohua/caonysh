@@ -6,6 +6,8 @@
 
 **Status:** ready-for-agent
 
+完整上下文（用户故事、测试决策、Out of Scope）见本 feature 目录下的 `../spec.md`。
+
 - [ ] Astro 项目初始化完成，`astro build` 产出静态 HTML
 - [ ] Product Config schema 定义了 Product 的名称、分类、图片、描述、价格、MOQ、Specs、featured 字段
 - [ ] 2~3 个占位商品（含占位图）可通过编辑 JSON 增删

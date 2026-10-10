@@ -6,6 +6,8 @@
 
 **Status:** ready-for-agent
 
+完整上下文（用户故事、测试决策、Out of Scope）见本 feature 目录下的 `../spec.md`。
+
 - [ ] 表单五字段：name/email/message 必填，country/company 可选
 - [ ] 表单提交到 Web3Forms endpoint，hidden access key 经环境变量/构建配置注入
 - [ ] URL query 携带商品名时，表单预填该商品名上下文
