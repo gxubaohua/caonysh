@@ -4,6 +4,7 @@ node_modules/
 # Build output
 dist/
 dist-fixture/
+dist-validation-run/
 .astro/
 
 # Environment
