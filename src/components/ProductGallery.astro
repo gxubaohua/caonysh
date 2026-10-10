@@ -1,0 +1,88 @@
+---
+// Renders the multi-photo product gallery as a CSS-only switchable view:
+// one radio input per photo, image visibility driven by :checked + ~.
+// Zero JavaScript (Astro static SSG, ADR-0001).
+import { type Product } from '../lib/products';
+import { getImage } from 'astro:assets';
+import { productImages } from '../lib/images';
+
+interface Props {
+  product: Product;
+}
+
+const { product } = Astro.props;
+
+const galleryPhotos = await Promise.all(
+  product.images.map(async (imagePath, index) => {
+    const image = productImages[imagePath];
+    const optimized = await getImage({
+      src: image,
+      width: 800,
+      formats: ['webp'],
+    });
+    return { src: optimized.src, width: optimized.options.width, height: optimized.options.height, index };
+  }),
+);
+---
+
+<div class="gallery" data-gallery-count={galleryPhotos.length}>
+  {galleryPhotos.map((photo, index) => (
+    <input
+      type="radio"
+      name={`gallery-${product.slug}`}
+      id={`gallery-${product.slug}-${index}`}
+      checked={index === 0}
+    />
+  ))}
+  {galleryPhotos.map((photo) => (
+    <img
+      class="gallery-image"
+      src={photo.src}
+      alt={`${product.name} photo ${photo.index + 1}`}
+      width={photo.width}
+      height={photo.height}
+      loading={photo.index === 0 ? 'eager' : 'lazy'}
+    />
+  ))}
+  <div class="gallery-controls">
+    {galleryPhotos.map((photo, index) => (
+      <label for={`gallery-${product.slug}-${index}`} aria-label={`Show photo ${index + 1}`}>{index + 1}</label>
+    ))}
+  </div>
+</div>
+
+<style>
+  .gallery input[type='radio'] {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+  }
+  /* CSS-only photo switching: the checked radio reveals its following image. */
+  .gallery input[type='radio']:nth-of-type(1):checked ~ .gallery-image:nth-of-type(1),
+  .gallery input[type='radio']:nth-of-type(2):checked ~ .gallery-image:nth-of-type(2),
+  .gallery input[type='radio']:nth-of-type(3):checked ~ .gallery-image:nth-of-type(3),
+  .gallery input[type='radio']:nth-of-type(4):checked ~ .gallery-image:nth-of-type(4),
+  .gallery input[type='radio']:nth-of-type(5):checked ~ .gallery-image:nth-of-type(5),
+  .gallery input[type='radio']:nth-of-type(6):checked ~ .gallery-image:nth-of-type(6),
+  .gallery input[type='radio']:nth-of-type(7):checked ~ .gallery-image:nth-of-type(7),
+  .gallery input[type='radio']:nth-of-type(8):checked ~ .gallery-image:nth-of-type(8) {
+    display: block;
+  }
+  .gallery-image {
+    display: none;
+    max-width: 100%;
+    height: auto;
+  }
+  .gallery-controls {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+  }
+  .gallery-controls label {
+    cursor: pointer;
+    padding: 0.25rem 0.6rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 0.9rem;
+  }
+</style>
