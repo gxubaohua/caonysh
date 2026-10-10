@@ -28,5 +28,14 @@
     "price": null,
     "moq": null,
     "featured": false
+  },
+  {
+    "slug": "nitrile-rubber-gasket",
+    "name": "Nitrile Rubber Gasket",
+    "category": "gaskets",
+    "images": ["../assets/nitrile-rubber-gasket.png"],
+    "description": "Oil-resistant nitrile rubber gasket for pipe flanges and pump housings.",
+    "price": { "min": 0.15, "max": 0.40 },
+    "moq": 2000
   }
 ]

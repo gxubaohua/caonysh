@@ -1,6 +1,7 @@
 ---
 import site from '../../config/site.json';
 import { products, type Product } from '../../lib/products';
+import { nonEmptyCategories } from '../../lib/categories';
 import ProductCard from '../../components/ProductCard.astro';
 ---
 
@@ -19,6 +20,12 @@ import ProductCard from '../../components/ProductCard.astro';
 
     <main>
       <h1>Products</h1>
+
+      <nav class="category-filter" aria-label="Filter by category">
+        {nonEmptyCategories.map((category) => (
+          <a href={`/products/${category.slug}/`}>{category.name}</a>
+        ))}
+      </nav>
 
       <ul class="product-grid">
         {products.map((product: Product) => (
