@@ -61,6 +61,7 @@ const placeholders = [
   { file: 'steel-ball-bearing.png', color: [90, 110, 140, 255], variants: 3 },
   { file: 'stainless-steel-hex-nut.png', color: [170, 174, 182, 255], variants: 2 },
   { file: 'nylon-spacer.png', color: [222, 226, 230, 255], variants: 3 },
+  { file: 'nitrile-rubber-gasket.png', color: [200, 160, 130, 255], variants: 2 },
 ];
 
 const shade = (color, factor) =>

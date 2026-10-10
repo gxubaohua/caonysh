@@ -44,5 +44,18 @@
     "moq": null,
     "featured": false,
     "specs": { "Material": "Nylon 66", "Inner diameter": "4 mm", "Length": "12 mm" }
+  },
+  {
+    "slug": "nitrile-rubber-gasket",
+    "name": "Nitrile Rubber Gasket",
+    "category": "gaskets",
+    "images": [
+      "../assets/nitrile-rubber-gasket.png",
+      "../assets/nitrile-rubber-gasket-1.png",
+      "../assets/nitrile-rubber-gasket-2.png"
+    ],
+    "description": "Oil-resistant nitrile rubber gasket for pipe flanges and pump housings.",
+    "price": { "min": 0.15, "max": 0.40 },
+    "moq": 2000
   }
 ]
