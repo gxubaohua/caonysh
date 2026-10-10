@@ -1,0 +1,26 @@
+---
+import site from '../config/site.json';
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{site.companyName}</title>
+    <meta name="description" content={`B2B sourcing partner. Browse the ${site.companyName} product catalog and send an inquiry.`} />
+  </head>
+  <body>
+    <header>
+      <a href="/">{site.companyName}</a>
+      <nav>
+        <a href="/products/">Products</a>
+      </nav>
+    </header>
+
+    <main>
+      <h1>{site.companyName}</h1>
+      <p>B2B sourcing partner. Full catalog coming soon.</p>
+    </main>
+  </body>
+</html>
