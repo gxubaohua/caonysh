@@ -2,24 +2,17 @@
 // Featured products come from Product Config in file order (user story 24,
 // ADR-0004); the section is absent when no product is marked featured —
 // covered by a fixture-replacement test that swaps the Product Config,
-// rebuilds, asserts, then restores the committed config and rebuilds so
-// later test files see the committed catalog (ticket-02 fixture pattern).
+// rebuilds into an isolated outDir (the ticket-02 fixture pattern), asserts,
+// then restores the committed config. Building into the shared dist/ would
+// wipe pages other test files still read, making the suite order-dependent.
 import { execFileSync } from 'node:child_process';
-import { copyFileSync, rmSync } from 'node:fs';
+import { copyFileSync, readFileSync, rmSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { describe, expect, test } from 'vitest';
 import { readBuiltPage } from './helpers';
 
 const projectRoot = resolve(import.meta.dirname, '..');
 const productsConfig = resolve(projectRoot, 'src/content/products.json');
-
-function astroBuild() {
-  execFileSync('npx', ['astro', 'build'], {
-    cwd: projectRoot,
-    stdio: 'ignore',
-    shell: process.platform === 'win32',
-  });
-}
 
 /** Restore the committed Product Config via git; never leave a fixture behind. */
 function restoreProductsConfig() {
@@ -50,24 +43,20 @@ describe('Home page selling points and Featured Products (built HTML seam)', () 
   });
 
   test('renders no Featured section when no product is marked featured', () => {
+    const fixtureOutDir = resolve(projectRoot, 'dist-fixture');
     copyFileSync(resolve(projectRoot, 'test/fixtures/products-none-featured.json'), productsConfig);
     try {
-      astroBuild();
-      const rebuiltHome = readBuiltPage('index.html');
+      execFileSync('npx', ['astro', 'build', '--outDir', 'dist-fixture'], {
+        cwd: projectRoot,
+        stdio: 'ignore',
+        shell: process.platform === 'win32',
+      });
+      const rebuiltHome = readFileSync(resolve(fixtureOutDir, 'index.html'), 'utf8');
       expect(rebuiltHome).not.toMatch(/Featured Products?/i);
       expect(rebuiltHome).not.toContain('Steel Ball Bearing');
     } finally {
       restoreProductsConfig();
-      // Restore the pre-test build output so later test files (which run
-      // against the same dist produced by global-setup) keep seeing the
-      // committed Product Config. Rebuilding takes minutes on this machine;
-      // the committed-config dist is snapshotted before any fixture is
-      // swapped and copied back here.
-      rmSync(resolve(projectRoot, 'dist/index.html'));
-      copyFileSync(
-        resolve(projectRoot, 'test/baseline-dist/index.html'),
-        resolve(projectRoot, 'dist/index.html'),
-      );
+      rmSync(fixtureOutDir, { recursive: true, force: true });
     }
   }, 420_000);
 });
