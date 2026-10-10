@@ -49,7 +49,7 @@ describe('Contact page (built HTML seam)', () => {
   });
 
   test('page ships the Inquiry Prefill script reading the product query parameter', () => {
-    // The detail pages link here as /contact?product=<encoded name>; the
+    // The detail pages link here as <base>contact?product=<encoded name>; the
     // inline script decodes it into the message textarea (GLOSSARY: Inquiry
     // Prefill — initial content, not a required constraint). We assert the
     // script is present in the shipped HTML, not its runtime behavior.

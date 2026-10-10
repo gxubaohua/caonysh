@@ -1,5 +1,6 @@
 import { describe, expect, test } from 'vitest';
 import { readBuiltPage } from './helpers';
+import { SITE_BASE } from './site-base';
 
 describe('Product detail page (built HTML seam)', () => {
   test('exists for each product in the Product Config', () => {
@@ -90,12 +91,17 @@ describe('Product detail page (built HTML seam)', () => {
   });
 
   test('links the Inquiry button to the Contact page with the product name query parameter', () => {
+    // The Inquiry Prefill link carries the deploy base (GLOSSARY: Deploy).
     const bearing = readBuiltPage('products/item/steel-ball-bearing/index.html');
-    expect(bearing).toMatch(/<a[^>]+href="\/contact\/?\?product=Steel%20Ball%20Bearing"/);
+    expect(bearing).toMatch(
+      new RegExp(`<a[^>]+href="${SITE_BASE}contact\\?product=Steel%20Ball%20Bearing"`),
+    );
     expect(bearing).toContain('Send Inquiry');
 
     const spacer = readBuiltPage('products/item/nylon-spacer/index.html');
-    expect(spacer).toMatch(/<a[^>]+href="\/contact\/?\?product=Nylon%20Spacer"/);
+    expect(spacer).toMatch(
+      new RegExp(`<a[^>]+href="${SITE_BASE}contact\\?product=Nylon%20Spacer"`),
+    );
   });
 
   test('has a product-specific title and meta description', () => {

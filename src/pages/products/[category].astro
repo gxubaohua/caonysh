@@ -2,6 +2,7 @@
 import site from '../../config/site.json';
 import { nonEmptyCategories, categoryBySlug, productsInCategory } from '../../lib/categories';
 import ProductCard from '../../components/ProductCard.astro';
+import { sitePath } from '../../lib/site-path';
 
 // One landing page per non-empty Category at /products/<category-slug>/
 // (ADR-0004). Empty categories get no route here.
@@ -31,9 +32,9 @@ const categoryProducts = productsInCategory(category!);
   </head>
   <body>
     <header>
-      <a href="/">{site.companyName}</a>
+      <a href={sitePath('/')}>{site.companyName}</a>
       <nav>
-        <a href="/products/">Products</a>
+        <a href={sitePath('/products/')}>Products</a>
       </nav>
     </header>
 

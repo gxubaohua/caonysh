@@ -6,6 +6,7 @@
 // per-page title/meta description props. Pages pass <slot/> for content,
 // so new routes adopt the shell without touching it.
 import site from '../config/site.json';
+import { sitePath } from '../lib/site-path';
 
 interface Props {
   title: string;
@@ -26,15 +27,15 @@ const year = new Date().getFullYear();
   </head>
   <body>
     <header class="site-header">
-      <a class="site-brand" href="/">{site.companyName}</a>
+      <a class="site-brand" href={sitePath('/')}>{site.companyName}</a>
       <input id="nav-toggle" class="nav-toggle" type="checkbox" aria-label="Toggle navigation menu" />
       <label for="nav-toggle" class="nav-toggle-label" aria-hidden="true"><span></span></label>
       <nav class="site-nav" aria-label="Main navigation">
         <ul>
-          <li><a href="/">Home</a></li>
-          <li><a href="/products/">Products</a></li>
-          <li><a href="/about/">About</a></li>
-          <li><a href="/contact/">Contact</a></li>
+          <li><a href={sitePath('/')}>Home</a></li>
+          <li><a href={sitePath('/products/')}>Products</a></li>
+          <li><a href={sitePath('/about/')}>About</a></li>
+          <li><a href={sitePath('/contact/')}>Contact</a></li>
         </ul>
       </nav>
     </header>

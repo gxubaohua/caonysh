@@ -1,5 +1,6 @@
 import { describe, expect, test } from 'vitest';
 import { readBuiltPage } from './helpers';
+import { SITE_BASE } from './site-base';
 
 describe('Home page (built HTML seam)', () => {
   const html = readBuiltPage('index.html');
@@ -9,6 +10,7 @@ describe('Home page (built HTML seam)', () => {
   });
 
   test('links to the Products grid page', () => {
-    expect(html).toMatch(/<a[^>]+href="\/products\/?"/);
+    // Internal links carry the GitHub Pages deploy base (GLOSSARY: Deploy).
+    expect(html).toMatch(new RegExp(`<a[^>]+href="${SITE_BASE}products/?"`));
   });
 });

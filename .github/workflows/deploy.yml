@@ -1,0 +1,97 @@
+# CI + Deploy (GLOSSARY: Deploy): every push and PR runs typecheck and the
+# test suite; pushes to main additionally build the site and deploy it to
+# GitHub Pages. Hand-written actions (checkout / setup-node /
+# upload-pages-artifact / deploy-pages) instead of withastro/action for
+# transparency and control over each step.
+#
+# Required repository setup (done by a human, not by this workflow):
+#   - Settings > Pages > Source: "GitHub Actions"
+#   - Settings > Secrets > Actions: WEB3FORMS_ACCESS_KEY (the Web3Forms
+#     access key for the Contact inquiry form, ADR-0003). It is passed to
+#     the build as PUBLIC_WEB3FORMS_ACCESS_KEY and never appears in the
+#     repository. CI test builds run without it — an empty value must not
+#     fail the build (ticket 06 guarantee).
+name: Deploy site to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+# Permissions required by actions/deploy-pages (Pages deploy is main-only).
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# One deploy at a time; drop queued runs that are superseded mid-run.
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    name: Typecheck and test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Set up Node
+        uses: actions/setup-node@v5
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Typecheck
+        run: npm run typecheck
+
+      - name: Test
+        # The test suite builds the real site first (test/global-setup.ts),
+        # then asserts on the built HTML — the spec's single test seam.
+        # Runs without WEB3FORMS_ACCESS_KEY on purpose: an empty access key
+        # must not break the build or tests.
+        run: npm test
+
+  deploy:
+    name: Build and deploy to Pages
+    needs: verify
+    # Deploy only on pushes to main — never on pull requests.
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Set up Node
+        uses: actions/setup-node@v5
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build site
+        # The Web3Forms access key lives in the GitHub secret, injected here
+        # at build time as PUBLIC_WEB3FORMS_ACCESS_KEY (ADR-0003). astro
+        # picks up site/base for the GitHub Pages project URL from
+        # astro.config.mjs — no per-job configuration needed.
+        env:
+          PUBLIC_WEB3FORMS_ACCESS_KEY: ${{ secrets.WEB3FORMS_ACCESS_KEY }}
+        run: npm run build
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: dist
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
