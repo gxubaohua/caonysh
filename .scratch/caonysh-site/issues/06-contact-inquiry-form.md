@@ -21,3 +21,4 @@
 - 预填实现方式决定：Inquiry Prefill 写入 message textarea 初始内容（"Inquiry about: X\n"），不设只读上下文字段——按 GLOSSARY "表单的初始内容，不是必填约束"，买家可自由改写；内联脚本读 `location.search` 的 `product` 参数并 `decodeURIComponent`（含 decode 失败兜底）。
 - 测试：`test/contact.test.ts`（11 例）全部在构建产物 HTML 接缝上断言——字段/required/无 tel、form action、hidden access_key、正文邮箱、预填脚本与提交脚本在 HTML 中存在、成功/失败面板标记。不测网络提交。
 - 关键文件：`src/pages/contact.astro`、`test/contact.test.ts`、`.env.example`。
+- 收尾时发现的测试基建问题（一并修复）：新增第 12 个测试文件改变了 vitest 的文件执行顺序，暴露工单 05 遗留的顺序依赖——`test/home-featured.test.ts` 的 fixture 构建写进共享 `dist/` 且只恢复 `index.html`（快照恢复机制不完整，gaskets 落地页等页面被清掉）。已按工单 02 的隔离 outDir 模式重写该测试并删除废弃的 `test/baseline-dist/` 快照，修复提交 a55f038。
