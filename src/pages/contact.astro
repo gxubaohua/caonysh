@@ -1,0 +1,241 @@
+---
+// Contact page: the Inquiry form surface (user stories 14-20, 34; GLOSSARY:
+// Inquiry; ADR-0003 — submitted via Web3Forms, nothing persisted by the site).
+import BaseLayout from '../layouts/BaseLayout.astro';
+import site from '../config/site.json';
+
+// Web3Forms access key is injected at build time from the environment so it
+// never lives in the repository (ADR-0003). It must be client-visible, hence
+// PUBLIC_. Empty by default so local builds without the key still succeed.
+const web3formsAccessKey = import.meta.env.PUBLIC_WEB3FORMS_ACCESS_KEY ?? '';
+---
+
+<BaseLayout
+  title="Contact | Caonysh"
+  description="Send Caonysh an inquiry: name, email and message required — we reply from our company inbox."
+>
+  <section class="contact">
+    <h1>Contact Us</h1>
+    <p>
+      Send us an inquiry and we will reply from our company inbox. You can also email us
+      directly at <a href={`mailto:${site.contactEmail}`}>{site.contactEmail}</a>.
+    </p>
+
+    <form
+      class="inquiry-form"
+      action="https://api.web3forms.com/submit"
+      method="POST"
+    >
+      <input type="hidden" name="access_key" value={web3formsAccessKey} />
+      <label for="inquiry-name">Name *</label>
+      <input id="inquiry-name" name="name" type="text" autocomplete="name" required />
+
+      <label for="inquiry-email">Email *</label>
+      <input id="inquiry-email" name="email" type="email" autocomplete="email" required />
+
+      <label for="inquiry-country">Country</label>
+      <select id="inquiry-country" name="country">
+        <option value="">— Select your country —</option>
+        <option value="United States">United States</option>
+        <option value="Canada">Canada</option>
+        <option value="Mexico">Mexico</option>
+        <option value="Brazil">Brazil</option>
+        <option value="United Kingdom">United Kingdom</option>
+        <option value="Germany">Germany</option>
+        <option value="France">France</option>
+        <option value="Italy">Italy</option>
+        <option value="Spain">Spain</option>
+        <option value="Netherlands">Netherlands</option>
+        <option value="Poland">Poland</option>
+        <option value="Turkey">Turkey</option>
+        <option value="Russia">Russia</option>
+        <option value="United Arab Emirates">United Arab Emirates</option>
+        <option value="Saudi Arabia">Saudi Arabia</option>
+        <option value="India">India</option>
+        <option value="Japan">Japan</option>
+        <option value="South Korea">South Korea</option>
+        <option value="Vietnam">Vietnam</option>
+        <option value="Thailand">Thailand</option>
+        <option value="Malaysia">Malaysia</option>
+        <option value="Singapore">Singapore</option>
+        <option value="Indonesia">Indonesia</option>
+        <option value="Australia">Australia</option>
+        <option value="New Zealand">New Zealand</option>
+        <option value="South Africa">South Africa</option>
+        <option value="Other">Other</option>
+      </select>
+
+      <label for="inquiry-company">Company</label>
+      <input id="inquiry-company" name="company" type="text" autocomplete="organization" />
+
+      <label for="inquiry-message">Message *</label>
+      <textarea id="inquiry-message" name="message" rows="6" required></textarea>
+
+      <button type="submit">Send Inquiry</button>
+    </form>
+
+    <p class="inquiry-success" hidden>
+      Thank you — your inquiry has been sent. We will reply to your email shortly.
+    </p>
+
+    <div class="inquiry-error" hidden>
+      <p>
+        Sorry — your inquiry could not be sent. Please retry, or email us directly at
+        <a href={`mailto:${site.contactEmail}`}>{site.contactEmail}</a>.
+      </p>
+      <button type="button" class="inquiry-retry">Retry</button>
+    </div>
+  </section>
+
+  <script is:inline>
+    // Inquiry Prefill (GLOSSARY): when a product detail page links here as
+    // /contact?product=<encoded name>, decode it into the message textarea
+    // as initial content — never a required constraint.
+    (function () {
+      var product = new URLSearchParams(window.location.search).get('product');
+      if (!product) return;
+      var message = document.getElementById('inquiry-message');
+      if (!message) return;
+      var decoded;
+      try {
+        decoded = decodeURIComponent(product);
+      } catch (e) {
+        decoded = product;
+      }
+      message.value = 'Inquiry about: ' + decoded + '\n';
+    })();
+  </script>
+
+  <script is:inline>
+    // Inquiry submission (ADR-0003): POST the form to Web3Forms with fetch
+    // and switch the DOM between form / success / error states. Zero
+    // framework, progressive enhancement — without this script the form
+    // still submits natively to the same endpoint.
+    (function () {
+      var form = document.querySelector('.inquiry-form');
+      if (!form) return;
+      var successPanel = document.querySelector('.inquiry-success');
+      var errorPanel = document.querySelector('.inquiry-error');
+      var retryButton = errorPanel ? errorPanel.querySelector('.inquiry-retry') : null;
+
+      function showError() {
+        errorPanel.hidden = false;
+        form.hidden = true;
+        if (retryButton) retryButton.disabled = false;
+      }
+
+      function showSuccess() {
+        form.hidden = true;
+        successPanel.hidden = false;
+      }
+
+      form.addEventListener('submit', function (event) {
+        event.preventDefault();
+        if (retryButton) retryButton.disabled = true;
+        fetch(form.action, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+          body: JSON.stringify(Object.fromEntries(new FormData(form))),
+        })
+          .then(function (response) {
+            return response.json().then(function (result) {
+              return { ok: response.ok, success: result.success };
+            });
+          })
+          .then(function (outcome) {
+            if (outcome.ok && outcome.success) showSuccess();
+            else showError();
+          })
+          .catch(showError);
+      });
+
+      if (retryButton) {
+        retryButton.addEventListener('click', function () {
+          errorPanel.hidden = true;
+          form.hidden = false;
+        });
+      }
+    })();
+  </script>
+</BaseLayout>
+
+<style>
+  .contact {
+    max-width: 40rem;
+  }
+
+  .inquiry-form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    margin-top: 1.5rem;
+  }
+
+  .inquiry-form label {
+    margin-top: 0.75rem;
+    font-weight: 600;
+    font-size: 0.95rem;
+  }
+
+  .inquiry-form input,
+  .inquiry-form select,
+  .inquiry-form textarea {
+    font: inherit;
+    padding: 0.6rem 0.7rem;
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    background: var(--color-bg);
+    color: var(--color-text);
+  }
+
+  .inquiry-form button {
+    margin-top: 1.25rem;
+    padding: 0.75rem 1.5rem;
+    font: inherit;
+    font-weight: 600;
+    color: #fff;
+    background: var(--color-accent);
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    align-self: flex-start;
+  }
+
+  .inquiry-form button:hover {
+    background: var(--color-accent-dark);
+  }
+
+  .inquiry-success,
+  .inquiry-error {
+    margin-top: 1.5rem;
+    padding: 1rem 1.25rem;
+    border-radius: 6px;
+  }
+
+  .inquiry-success {
+    background: #e8f5e9;
+    border: 1px solid #a5d6a7;
+    color: #1b5e20;
+  }
+
+  .inquiry-error {
+    background: #fdecea;
+    border: 1px solid #f5b7b1;
+    color: #7f1d1d;
+  }
+
+  .inquiry-error p {
+    margin: 0 0 0.75rem;
+  }
+
+  .inquiry-retry {
+    font: inherit;
+    font-weight: 600;
+    padding: 0.5rem 1.25rem;
+    color: #7f1d1d;
+    background: #fff;
+    border: 1px solid #f5b7b1;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+</style>
