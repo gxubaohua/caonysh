@@ -1,0 +1,248 @@
+---
+// Site-wide layout shell: every page renders inside it. Owns the shared
+// visitor furniture — responsive nav (desktop row, mobile hamburger via the
+// CSS checkbox hack: zero JS, ADR-0001 zero-JS default), footer with Site
+// Config company name and contact email (never hardcoded), and the
+// per-page title/meta description props. Pages pass <slot/> for content,
+// so new routes adopt the shell without touching it.
+import site from '../config/site.json';
+
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+const year = new Date().getFullYear();
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="site-brand" href="/">{site.companyName}</a>
+      <input id="nav-toggle" class="nav-toggle" type="checkbox" aria-label="Toggle navigation menu" />
+      <label for="nav-toggle" class="nav-toggle-label" aria-hidden="true"><span></span></label>
+      <nav class="site-nav" aria-label="Main navigation">
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/products/">Products</a></li>
+          <li><a href="/about/">About</a></li>
+          <li><a href="/contact/">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main class="site-main">
+      <slot />
+    </main>
+
+    <footer class="site-footer">
+      <p>
+        {site.companyName} &middot; <a href={`mailto:${site.contactEmail}`}>{site.contactEmail}</a>
+      </p>
+      <p>&copy; {year} {site.companyName}. All rights reserved.</p>
+    </footer>
+  </body>
+</html>
+
+<style is:global>
+  /* Global base styles: modern minimal, generous whitespace, card surfaces.
+     Plain CSS, no framework (spec: Implementation Decisions). */
+  :root {
+    --color-text: #1f2933;
+    --color-muted: #616e7c;
+    --color-accent: #1a5fb4;
+    --color-accent-dark: #124887;
+    --color-bg: #ffffff;
+    --color-bg-soft: #f5f7fa;
+    --color-border: #e4e7eb;
+    --radius-card: 10px;
+    --max-width: 1080px;
+    --space-section: 3.5rem;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    color: var(--color-text);
+    background: var(--color-bg);
+    line-height: 1.6;
+  }
+
+  a {
+    color: var(--color-accent);
+    text-decoration: none;
+  }
+
+  a:hover {
+    color: var(--color-accent-dark);
+    text-decoration: underline;
+  }
+
+  h1,
+  h2,
+  h3 {
+    line-height: 1.25;
+  }
+
+  /* Layout regions */
+  .site-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.5rem 1rem;
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 1rem 1.25rem;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .site-brand {
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--color-text);
+    letter-spacing: 0.02em;
+  }
+
+  .site-nav ul {
+    display: flex;
+    gap: 1.25rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .site-nav a {
+    color: var(--color-text);
+    font-weight: 500;
+    padding: 0.25rem 0;
+  }
+
+  /* Mobile nav: hamburger via checkbox hack — pure CSS, zero JS. */
+  .nav-toggle,
+  .nav-toggle-label {
+    display: none;
+  }
+
+  @media (max-width: 640px) {
+    .nav-toggle-label {
+      display: inline-flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      width: 2rem;
+      height: 2rem;
+      cursor: pointer;
+      order: 3;
+    }
+
+    .nav-toggle-label span,
+    .nav-toggle-label span::before,
+    .nav-toggle-label span::after {
+      display: block;
+      width: 1.5rem;
+      height: 2px;
+      background: var(--color-text);
+      border-radius: 1px;
+      content: '';
+    }
+
+    .nav-toggle-label span::before {
+      transform: translateY(-7px);
+    }
+
+    .nav-toggle-label span::after {
+      transform: translateY(4px);
+    }
+
+    .site-nav {
+      display: none;
+      flex-basis: 100%;
+      order: 2;
+    }
+
+    .nav-toggle:checked ~ .site-nav {
+      display: block;
+    }
+
+    .site-nav ul {
+      flex-direction: column;
+      gap: 0.75rem;
+      padding: 0.75rem 0 0.5rem;
+    }
+  }
+
+  .site-main {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 2rem 1.25rem var(--space-section);
+    min-height: 60vh;
+  }
+
+  .site-footer {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 1.5rem 1.25rem;
+    border-top: 1px solid var(--color-border);
+    color: var(--color-muted);
+    font-size: 0.9rem;
+  }
+
+  .site-footer p {
+    margin: 0.25rem 0;
+  }
+
+  /* Shared card + grid styles for product surfaces */
+  .product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1.5rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .product-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1rem;
+    background: var(--color-bg-soft);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-card);
+  }
+
+  .product-card img {
+    width: 100%;
+    height: auto;
+    border-radius: calc(var(--radius-card) - 4px);
+    background: #dfe4ea;
+  }
+
+  .product-card h2 {
+    margin: 0;
+    font-size: 1.1rem;
+  }
+
+  .product-card .price {
+    margin: 0;
+    font-weight: 600;
+    color: var(--color-accent-dark);
+  }
+</style>

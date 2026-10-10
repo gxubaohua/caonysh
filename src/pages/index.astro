@@ -1,26 +1,136 @@
 ---
-import site from '../config/site.json';
+// Home page: company selling points (B2B sourcing angle) and the Featured
+// Product section. Featured products are filtered from the Product Config
+// in file order (user story 24, ADR-0004: no order field). When nothing is
+// marked featured the section does not render.
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ProductCard from '../components/ProductCard.astro';
+import { products, type Product } from '../lib/products';
+
+const featured = products.filter((product: Product) => product.featured);
 ---
 
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{site.companyName}</title>
-    <meta name="description" content={`B2B sourcing partner. Browse the ${site.companyName} product catalog and send an inquiry.`} />
-  </head>
-  <body>
-    <header>
-      <a href="/">{site.companyName}</a>
-      <nav>
-        <a href="/products/">Products</a>
-      </nav>
-    </header>
+<BaseLayout
+  title="Caonysh — Precision Components for Global B2B Buyers"
+  description="Caonysh is your B2B sourcing partner for precision components: factory-direct quality, MOQ-friendly terms, and fast inquiry response."
+>
+  <section class="hero">
+    <h1>Precision Components. Factory-Direct Terms.</h1>
+    <p>
+      Caonysh supplies industrial components to buyers worldwide — with dependable quality,
+      MOQ-friendly ordering, and a straight-to-your-inbox inquiry process.
+    </p>
+    <p><a class="button" href="/products/">Browse the catalog</a></p>
+  </section>
 
-    <main>
-      <h1>{site.companyName}</h1>
-      <p>B2B sourcing partner. Full catalog coming soon.</p>
-    </main>
-  </body>
-</html>
+  <section class="selling-points" aria-label="Why buy from Caonysh">
+    <h2>Why source with Caonysh</h2>
+    <ul>
+      <li>
+        <h3>Quality you can audit</h3>
+        <p>Every product ships with material specs and factory inspection standards.</p>
+      </li>
+      <li>
+        <h3>MOQ-friendly for growing orders</h3>
+        <p>Minimum order quantities sized for trial orders, not just container loads.</p>
+      </li>
+      <li>
+        <h3>Manufacturing depth</h3>
+        <p>Partner factories running precision machining and finishing lines.</p>
+      </li>
+      <li>
+        <h3>Fast, human inquiry response</h3>
+        <p>Email an inquiry and get a quoted answer — no account, no portal.</p>
+      </li>
+    </ul>
+  </section>
+
+  {
+    featured.length > 0 && (
+      <section class="featured" aria-label="Featured products">
+        <h2>Featured Products</h2>
+        <ul class="product-grid">
+          {featured.map((product: Product) => (
+            <li>
+              <ProductCard product={product} />
+            </li>
+          ))}
+        </ul>
+        <p>
+          <a href="/products/">See all products &rarr;</a>
+        </p>
+      </section>
+    )
+  }
+</BaseLayout>
+
+<style>
+  .hero {
+    text-align: center;
+    padding: 3rem 0 var(--space-section);
+  }
+
+  .hero h1 {
+    font-size: clamp(1.75rem, 4vw, 2.75rem);
+    margin: 0 0 1rem;
+  }
+
+  .hero p {
+    max-width: 40rem;
+    margin: 0 auto 1.5rem;
+    color: var(--color-muted);
+    font-size: 1.1rem;
+  }
+
+  .button {
+    display: inline-block;
+    background: var(--color-accent);
+    color: #fff;
+    padding: 0.7rem 1.6rem;
+    border-radius: 999px;
+    font-weight: 600;
+  }
+
+  .button:hover {
+    background: var(--color-accent-dark);
+    color: #fff;
+    text-decoration: none;
+  }
+
+  .selling-points h2,
+  .featured h2 {
+    font-size: 1.5rem;
+    margin: 0 0 1.25rem;
+  }
+
+  .selling-points ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.25rem;
+    list-style: none;
+    margin: 0 0 var(--space-section);
+    padding: 0;
+  }
+
+  .selling-points li {
+    background: var(--color-bg-soft);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-card);
+    padding: 1.25rem;
+  }
+
+  .selling-points h3 {
+    margin: 0 0 0.5rem;
+    font-size: 1.05rem;
+  }
+
+  .selling-points p {
+    margin: 0;
+    color: var(--color-muted);
+    font-size: 0.95rem;
+  }
+
+  .featured {
+    padding-bottom: var(--space-section);
+  }
+</style>

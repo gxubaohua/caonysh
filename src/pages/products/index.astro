@@ -1,32 +1,24 @@
 ---
-import site from '../../config/site.json';
-import { products, type Product } from '../../lib/products';
+// Products grid page: the full catalog at a glance, in Product Config file
+// order (ADR-0004). Shell furniture (nav, footer, meta) comes from
+// BaseLayout.
+import BaseLayout from '../../layouts/BaseLayout.astro';
 import ProductCard from '../../components/ProductCard.astro';
+import { products, type Product } from '../../lib/products';
+import site from '../../config/site.json';
 ---
 
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Products | {site.companyName}</title>
-    <meta name="description" content={`Browse the full ${site.companyName} product catalog.`} />
-  </head>
-  <body>
-    <header>
-      <a href="/">{site.companyName}</a>
-    </header>
+<BaseLayout
+  title={`Products | ${site.companyName}`}
+  description={`Browse the full ${site.companyName} product catalog — precision components with transparent pricing and MOQs.`}
+>
+  <h1>Products</h1>
 
-    <main>
-      <h1>Products</h1>
-
-      <ul class="product-grid">
-        {products.map((product: Product) => (
-          <li>
-            <ProductCard product={product} />
-          </li>
-        ))}
-      </ul>
-    </main>
-  </body>
-</html>
+  <ul class="product-grid">
+    {products.map((product: Product) => (
+      <li>
+        <ProductCard product={product} />
+      </li>
+    ))}
+  </ul>
+</BaseLayout>
