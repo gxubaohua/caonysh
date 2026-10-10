@@ -1,0 +1,28 @@
+---
+// Renders the product Spec table: free-form key-value rows defined per
+// product in the Product Config (GLOSSARY: Spec). No fixed schema.
+import { type Product } from '../lib/products';
+
+interface Props {
+  product: Product;
+}
+
+const { product } = Astro.props;
+const specRows = Object.entries(product.specs ?? {});
+---
+
+{specRows.length > 0 && (
+  <section class="specs" aria-label="Specs">
+    <h2>Specs</h2>
+    <table class="spec-table">
+      <tbody>
+        {specRows.map(([key, value]) => (
+          <tr>
+            <th scope="row">{key}</th>
+            <td>{value}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </section>
+)}

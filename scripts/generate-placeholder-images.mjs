@@ -54,16 +54,31 @@ function png8x8(rgba) {
   ]);
 }
 
+// Placeholder products: base image plus numbered gallery variants, giving
+// each product 3~8 photos for the product detail page gallery (ticket 04).
+// Variants are the base color at different brightness factors — solid PNGs.
 const placeholders = [
-  { file: 'steel-ball-bearing.png', color: [90, 110, 140, 255] },
-  { file: 'stainless-steel-hex-nut.png', color: [170, 174, 182, 255] },
-  { file: 'nylon-spacer.png', color: [222, 226, 230, 255] },
+  { file: 'steel-ball-bearing.png', color: [90, 110, 140, 255], variants: 3 },
+  { file: 'stainless-steel-hex-nut.png', color: [170, 174, 182, 255], variants: 2 },
+  { file: 'nylon-spacer.png', color: [222, 226, 230, 255], variants: 3 },
 ];
 
-for (const { file, color } of placeholders) {
+const shade = (color, factor) =>
+  color.map((c, i) => (i === 3 ? c : Math.min(255, Math.round(c * factor))));
+
+const factors = [0.8, 1.15, 0.65, 0.9];
+
+for (const { file, color, variants } of placeholders) {
   const [r, g, b, a] = color;
   const pixel = Buffer.from([r, g, b, a]);
   const pixels = Buffer.concat(Array(8).fill(pixel));
   writeFileSync(resolve(assetsDir, file), png8x8(pixels));
   console.log(`wrote src/assets/${file}`);
+  for (let v = 1; v <= variants; v++) {
+    const variantFile = file.replace(/\.png$/, `-${v}.png`);
+    const [vr, vg, vb] = shade(color, factors[(v - 1) % factors.length]);
+    const vPixels = Buffer.concat(Array(8).fill(Buffer.from([vr, vg, vb, a])));
+    writeFileSync(resolve(assetsDir, variantFile), png8x8(vPixels));
+    console.log(`wrote src/assets/${variantFile}`);
+  }
 }
