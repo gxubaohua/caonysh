@@ -1,0 +1,32 @@
+---
+import site from '../../config/site.json';
+import { products, type Product } from '../../lib/products';
+import ProductCard from '../../components/ProductCard.astro';
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Products | {site.companyName}</title>
+    <meta name="description" content={`Browse the full ${site.companyName} product catalog.`} />
+  </head>
+  <body>
+    <header>
+      <a href="/">{site.companyName}</a>
+    </header>
+
+    <main>
+      <h1>Products</h1>
+
+      <ul class="product-grid">
+        {products.map((product: Product) => (
+          <li>
+            <ProductCard product={product} />
+          </li>
+        ))}
+      </ul>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,30 @@
+---
+// Renders one product in the grid: image, name, price. Price is the two-state
+// Price Strategy from GLOSSARY/ADR-0004: a filled value (exact or USD range)
+// or empty (renders "Contact for price").
+import { type Product, formatPrice } from '../lib/products';
+import { getImage } from 'astro:assets';
+import { productImages } from '../lib/images';
+
+interface Props {
+  product: Product;
+}
+
+const { product } = Astro.props;
+const imagePath = product.images[0];
+const image = productImages[imagePath];
+
+const optimized = await getImage({
+  src: image,
+  width: 400,
+  formats: ['webp'],
+});
+---
+
+<article class="product-card">
+  <img src={optimized.src} alt={product.name} width={optimized.options.width} height={optimized.options.height} loading="lazy" />
+  <h2>{product.name}</h2>
+  <p class="price">
+    {product.price === null ? 'Contact for price' : formatPrice(product.price)}
+  </p>
+</article>
