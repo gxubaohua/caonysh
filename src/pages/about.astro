@@ -3,6 +3,7 @@
 // judge trustworthiness). Copy is placeholder per spec Out of Scope
 // ("真实商品图片与最终文案" not in this phase).
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { sitePath } from '../lib/site-path';
 ---
 
 <BaseLayout
@@ -28,7 +29,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     </ul>
     <p>
       Want to know if we can supply a part you need?
-      <a href="/contact/">Send us an inquiry</a>.
+      <a href={sitePath('/contact/')}>Send us an inquiry</a>.
     </p>
   </section>
 </BaseLayout>

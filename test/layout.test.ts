@@ -5,6 +5,7 @@
 // across pages (user stories 11, 13, 19; GLOSSARY: Site Config).
 import { describe, expect, test } from 'vitest';
 import { readBuiltPage } from './helpers';
+import { SITE_BASE } from './site-base';
 
 const home = readBuiltPage('index.html');
 const products = readBuiltPage('products/index.html');
@@ -22,10 +23,11 @@ function metaDescription(html: string): string | null {
 describe('site-wide layout shell (built HTML seam)', () => {
   for (const [pageName, html] of Object.entries(pages)) {
     test(`${pageName}: navigates to Home, Products, About and Contact`, () => {
-      expect(html).toMatch(/<a[^>]+href="\/"/);
-      expect(html).toMatch(/<a[^>]+href="\/products\/"/);
-      expect(html).toMatch(/<a[^>]+href="\/about\/"/);
-      expect(html).toMatch(/<a[^>]+href="\/contact\/"/);
+      // Internal links carry the GitHub Pages deploy base (GLOSSARY: Deploy).
+      expect(html).toMatch(new RegExp(`<a[^>]+href="${SITE_BASE}"`));
+      expect(html).toMatch(new RegExp(`<a[^>]+href="${SITE_BASE}products/"`));
+      expect(html).toMatch(new RegExp(`<a[^>]+href="${SITE_BASE}about/"`));
+      expect(html).toMatch(new RegExp(`<a[^>]+href="${SITE_BASE}contact/"`));
     });
 
     test(`${pageName}: nav is expandable on mobile (hamburger toggle)`, () => {

@@ -6,6 +6,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ProductCard from '../components/ProductCard.astro';
 import { products, type Product } from '../lib/products';
+import { sitePath } from '../lib/site-path';
 
 const featured = products.filter((product: Product) => product.featured);
 ---
@@ -20,7 +21,7 @@ const featured = products.filter((product: Product) => product.featured);
       Caonysh supplies industrial components to buyers worldwide — with dependable quality,
       MOQ-friendly ordering, and a straight-to-your-inbox inquiry process.
     </p>
-    <p><a class="button" href="/products/">Browse the catalog</a></p>
+    <p><a class="button" href={sitePath('/products/')}>Browse the catalog</a></p>
   </section>
 
   <section class="selling-points" aria-label="Why buy from Caonysh">
@@ -57,7 +58,7 @@ const featured = products.filter((product: Product) => product.featured);
           ))}
         </ul>
         <p>
-          <a href="/products/">See all products &rarr;</a>
+          <a href={sitePath('/products/')}>See all products &rarr;</a>
         </p>
       </section>
     )

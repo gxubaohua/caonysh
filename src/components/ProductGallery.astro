@@ -12,8 +12,16 @@ interface Props {
 
 const { product } = Astro.props;
 
-const galleryPhotos = await Promise.all(
-  product.images.map(async (imagePath, index) => {
+// One entry per product photo, resolved through Astro's image pipeline.
+interface GalleryPhoto {
+  src: string;
+  width: number | undefined;
+  height: number | undefined;
+  index: number;
+}
+
+const galleryPhotos: GalleryPhoto[] = await Promise.all(
+  product.images.map(async (imagePath: string, index: number): Promise<GalleryPhoto> => {
     const image = productImages[imagePath];
     const optimized = await getImage({
       src: image,
@@ -26,7 +34,7 @@ const galleryPhotos = await Promise.all(
 ---
 
 <div class="gallery" data-gallery-count={galleryPhotos.length}>
-  {galleryPhotos.map((photo, index) => (
+  {galleryPhotos.map((photo: GalleryPhoto, index: number) => (
     <input
       type="radio"
       name={`gallery-${product.slug}`}
@@ -34,7 +42,7 @@ const galleryPhotos = await Promise.all(
       checked={index === 0}
     />
   ))}
-  {galleryPhotos.map((photo) => (
+  {galleryPhotos.map((photo: GalleryPhoto) => (
     <img
       class="gallery-image"
       src={photo.src}
@@ -45,7 +53,7 @@ const galleryPhotos = await Promise.all(
     />
   ))}
   <div class="gallery-controls">
-    {galleryPhotos.map((photo, index) => (
+    {galleryPhotos.map((photo: GalleryPhoto, index: number) => (
       <label for={`gallery-${product.slug}-${index}`} aria-label={`Show photo ${index + 1}`}>{index + 1}</label>
     ))}
   </div>
