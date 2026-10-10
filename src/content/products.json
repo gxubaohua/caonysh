@@ -7,7 +7,8 @@
     "description": "Precision steel ball bearing for industrial machinery, sealed for long service life.",
     "price": { "min": 1.2, "max": 1.5 },
     "moq": 1000,
-    "featured": true
+    "featured": true,
+    "specs": { "Material": "Chrome steel (GCr15)", "Bore": "10 mm", "Seal": "2RS" }
   },
   {
     "slug": "stainless-steel-hex-nut",

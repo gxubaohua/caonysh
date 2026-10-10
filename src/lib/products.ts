@@ -18,6 +18,7 @@ export interface Product {
   price: Price | null;
   moq?: number | null;
   featured?: boolean;
+  specs?: Record<string, string>;
 }
 
 export const products: Product[] = rawProducts;
