@@ -11,12 +11,12 @@ describe('image path validation (build process seam)', () => {
     'an image path pointing at a missing file fails the build, naming the product',
     { timeout: 10 * 60 * 1000 },
     () =>
-      // Fixture: committed Product Config with a typo'd second image path on
-      // crinkle-paper-filler.
+      // Fixture: committed Product Config with a typo'd fourth image path on
+      // plant-stake-arms.
       withProductsFixture('products-image-typo.json', (result) => {
         expect(result.failed).toBe(true);
-        expect(result.output).toContain('Crinkle Paper Filler');
-        expect(result.output).toMatch(/crinkle-paper-filler-typo\.jpg/);
+        expect(result.output).toContain('Plant Stake Arms');
+        expect(result.output).toMatch(/plant-stake-arms-typo\.jpg/);
       }).then(removeFixtureOutDir),
   );
 });
