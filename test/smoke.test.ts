@@ -14,15 +14,14 @@ import { resolve } from 'node:path';
 
 // The full route manifest: route file -> marker content unique to that page.
 const routes: Record<string, string[]> = {
-  'index.html': ['Featured Products', 'Steel Ball Bearing'],
-  'products/index.html': ['Steel Ball Bearing', 'Stainless Steel Hex Nut', 'Nylon Spacer', 'Nitrile Rubber Gasket'],
-  'products/bearings/index.html': ['Bearings', 'Steel Ball Bearing'],
-  'products/fasteners/index.html': ['Fasteners', 'Stainless Steel Hex Nut', 'Nylon Spacer'],
-  'products/gaskets/index.html': ['Gaskets', 'Nitrile Rubber Gasket'],
-  'products/p/steel-ball-bearing/index.html': ['Steel Ball Bearing', 'Send Inquiry'],
-  'products/p/stainless-steel-hex-nut/index.html': ['Stainless Steel Hex Nut', 'Send Inquiry'],
-  'products/p/nylon-spacer/index.html': ['Nylon Spacer', 'Send Inquiry'],
-  'products/p/nitrile-rubber-gasket/index.html': ['Nitrile Rubber Gasket', 'Send Inquiry'],
+  'index.html': ['Featured Products', 'Foil Glitter Plastic Tablecloths'],
+  'products/index.html': ['Foil Glitter Plastic Tablecloths', 'Crinkle Paper Filler', 'Plant Stake Arms'],
+  'products/tablecloths/index.html': ['Tablecloths', 'Foil Glitter Plastic Tablecloths'],
+  'products/gift-packaging/index.html': ['Gift Packaging', 'Crinkle Paper Filler'],
+  'products/garden-supplies/index.html': ['Garden Supplies', 'Plant Stake Arms'],
+  'products/p/foil-glitter-tablecloths/index.html': ['Foil Glitter Plastic Tablecloths', 'Send Inquiry'],
+  'products/p/crinkle-paper-filler/index.html': ['Crinkle Paper Filler', 'Send Inquiry'],
+  'products/p/plant-stake-arms/index.html': ['Plant Stake Arms', 'Send Inquiry'],
   'about/index.html': ['About Caonysh'],
   'contact/index.html': ['Contact Us', 'inquiry-form'],
 };
@@ -43,8 +42,13 @@ describe('whole-site smoke (built HTML seam)', () => {
     }
   });
 
-  test('empty Category (rotary-seals) produces no route', () => {
-    expect(existsSync(resolve(projectRoot, 'dist', 'products', 'rotary-seals'))).toBe(false);
+  test('no category route survives beyond the three defined categories', () => {
+    // Committed Category Config defines exactly tablecloths, gift-packaging,
+    // garden-supplies — every category has a product, so no fifth route may
+    // exist (guards against stale routes from renamed categories).
+    for (const stale of ['bearings', 'fasteners', 'gaskets', 'rotary-seals']) {
+      expect(existsSync(resolve(projectRoot, 'dist', 'products', stale))).toBe(false);
+    }
   });
 
   describe('GitHub Pages base path (deploy seam)', () => {
@@ -74,8 +78,10 @@ describe('whole-site smoke (built HTML seam)', () => {
     });
 
     test('the Inquiry Prefill link on detail pages keeps the product query under the base', () => {
-      const bearing = pages['products/p/steel-ball-bearing/index.html'];
-      expect(bearing).toMatch(new RegExp(`<a[^>]+href="${SITE_BASE}contact\\?product=Steel%20Ball%20Bearing"`));
+      const tablecloths = pages['products/p/foil-glitter-tablecloths/index.html'];
+      expect(tablecloths).toMatch(
+        new RegExp(`<a[^>]+href="${SITE_BASE}contact\\?product=Foil%20Glitter%20Plastic%20Tablecloths"`),
+      );
     });
   });
 });

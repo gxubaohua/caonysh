@@ -1,81 +1,60 @@
 [
   {
-    "slug": "steel-ball-bearing",
-    "name": "Steel Ball Bearing",
+    "slug": "foil-glitter-tablecloths",
+    "name": "Foil Glitter Plastic Tablecloths",
     "category": "no-such-category",
     "images": [
-      "../assets/steel-ball-bearing.png",
-      "../assets/steel-ball-bearing-1.png",
-      "../assets/steel-ball-bearing-2.png",
-      "../assets/steel-ball-bearing-3.png"
+      "../assets/foil-glitter-tablecloths.jpg",
+      "../assets/foil-glitter-tablecloths-1.jpg",
+      "../assets/foil-glitter-tablecloths-2.jpg",
+      "../assets/foil-glitter-tablecloths-3.jpg"
     ],
-    "description": "Precision steel ball bearing for industrial machinery, sealed for long service life.",
-    "price": {
-      "min": 1.2,
-      "max": 1.5
-    },
-    "moq": 1000,
+    "description": "Disposable foil-glitter plastic tablecloths for rectangle banquet tables, available in seven colors for parties, weddings, and holiday events.",
+    "price": { "min": 7.98, "max": 8.49 },
     "featured": true,
     "specs": {
-      "Material": "Chrome steel (GCr15)",
-      "Bore": "10 mm",
-      "Seal": "2RS"
+      "Size": "54 x 108 in (rectangle)",
+      "Pack": "4 tablecloths",
+      "Material": "Plastic, foil-glitter finish",
+      "Colors": "Iridescent, Blue, Pink, Gold, Black & Silver, Pink & Silver, Purple"
     }
   },
   {
-    "slug": "stainless-steel-hex-nut",
-    "name": "Stainless Steel Hex Nut",
-    "category": "fasteners",
+    "slug": "crinkle-paper-filler",
+    "name": "Crinkle Paper Filler",
+    "category": "gift-packaging",
     "images": [
-      "../assets/stainless-steel-hex-nut.png",
-      "../assets/stainless-steel-hex-nut-1.png",
-      "../assets/stainless-steel-hex-nut-2.png"
+      "../assets/crinkle-paper-filler.jpg",
+      "../assets/crinkle-paper-filler-1.jpg",
+      "../assets/crinkle-paper-filler-2.jpg",
+      "../assets/crinkle-paper-filler-3.jpg"
     ],
-    "description": "Corrosion-resistant stainless steel hex nut, standard thread, sold by the carton.",
-    "price": {
-      "min": 0.08
-    },
-    "moq": 5000,
+    "description": "Crinkle-cut shredded paper filler for gift baskets and gift boxes, adding cushioning and decorative fill in white and gold.",
+    "price": { "min": 8.99 },
+    "featured": true,
     "specs": {
-      "Material": "Stainless steel (304)",
-      "Thread": "M6 x 1.0",
-      "Standard": "DIN 934"
+      "Weight": "8.5 oz (240 g)",
+      "Color": "White & Gold",
+      "Use": "Gift basket and gift box filler"
     }
   },
   {
-    "slug": "nylon-spacer",
-    "name": "Nylon Spacer",
-    "category": "fasteners",
+    "slug": "plant-stake-arms",
+    "name": "Plant Stake Arms",
+    "category": "garden-supplies",
     "images": [
-      "../assets/nylon-spacer.png",
-      "../assets/nylon-spacer-1.png",
-      "../assets/nylon-spacer-2.png",
-      "../assets/nylon-spacer-3.png"
+      "../assets/plant-stake-arms.jpg",
+      "../assets/plant-stake-arms-1.jpg",
+      "../assets/plant-stake-arms-2.jpg",
+      "../assets/plant-stake-arms-3.jpg"
     ],
-    "description": "Lightweight nylon spacer for electrical insulation and vibration damping.",
-    "price": null,
-    "moq": null,
-    "featured": false,
+    "description": "Expandable connector arms that join plant stakes into cages and trellises, supporting tomatoes and climbing plants indoors and outdoors.",
+    "price": { "min": 11.99 },
+    "featured": true,
     "specs": {
-      "Material": "Nylon 66",
-      "Inner diameter": "4 mm",
-      "Length": "12 mm"
+      "Pack": "36 arms",
+      "Expanded length": "11.8 in (30 cm)",
+      "Fits stake diameter": "11 mm"
     }
-  },
-  {
-    "slug": "nitrile-rubber-gasket",
-    "name": "Nitrile Rubber Gasket",
-    "category": "gaskets",
-    "images": [
-      "../assets/nitrile-rubber-gasket.png",
-      "../assets/nitrile-rubber-gasket-1.png",
-      "../assets/nitrile-rubber-gasket-2.png"
-    ],
-    "description": "Oil-resistant nitrile rubber gasket for pipe flanges and pump housings.",
-    "price": {
-      "min": 0.15,
-      "max": 0.4
-    },
-    "moq": 2000
   }
 ]

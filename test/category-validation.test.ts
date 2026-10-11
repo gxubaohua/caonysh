@@ -18,7 +18,7 @@ describe('Build validation: product references an undefined category (built HTML
     () =>
       withProductsFixture('products-undefined-category.json', (result) => {
         expect(result.failed).toBe(true);
-        expect(result.output).toContain('Steel Ball Bearing');
+        expect(result.output).toContain('Foil Glitter Plastic Tablecloths');
         expect(result.output.toLowerCase()).toContain('category');
       }).then(removeFixtureOutDir),
   );
@@ -29,6 +29,6 @@ describe('Build validation: product references an undefined category (built HTML
     const restored = readFileSync(resolve(projectRoot, 'src/content/products.json'), 'utf8');
     // The restored live config must not contain the fixture's broken category.
     expect(restored).not.toBe(original);
-    expect(JSON.parse(restored)[0].category).toBe('bearings');
+    expect(JSON.parse(restored)[0].category).toBe('tablecloths');
   });
 });

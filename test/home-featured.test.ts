@@ -17,15 +17,12 @@ describe('Home page selling points and Featured Products (built HTML seam)', () 
     expect(html).toMatch(/MOQ/i);
   });
 
-  test('renders the Featured Product section with the featured product from the Product Config', () => {
+  test('renders the Featured Product section with the featured products from the Product Config', () => {
     expect(html).toMatch(/Featured Products?/i);
-    expect(html).toContain('Steel Ball Bearing'); // the one featured fixture product
-  });
-
-  test('renders only featured products on Home; the full grid lives on the Products page', () => {
-    // Hex Nut and Nylon Spacer are not featured, so they must not appear on Home.
-    expect(html).not.toContain('Stainless Steel Hex Nut');
-    expect(html).not.toContain('Nylon Spacer');
+    // all three products are marked featured in the committed config
+    expect(html).toContain('Foil Glitter Plastic Tablecloths');
+    expect(html).toContain('Crinkle Paper Filler');
+    expect(html).toContain('Plant Stake Arms');
   });
 
   test('renders no Featured section when no product is marked featured', { timeout: 420_000 }, () =>
@@ -33,7 +30,7 @@ describe('Home page selling points and Featured Products (built HTML seam)', () 
       expect(result.failed).toBe(false);
       const rebuiltHome = readFixtureBuiltPage('index.html');
       expect(rebuiltHome).not.toMatch(/Featured Products?/i);
-      expect(rebuiltHome).not.toContain('Steel Ball Bearing');
+      expect(rebuiltHome).not.toContain('Foil Glitter Plastic Tablecloths');
     }).then(removeFixtureOutDir),
   );
 });

@@ -11,10 +11,11 @@ import { readFixtureBuiltPage, withProductsFixture, removeFixtureOutDir } from '
 describe('Product display order equals Product Config file order (built HTML seam)', () => {
   test('products render in the order they appear in the JSON array', { timeout: 10 * 60 * 1000 }, () =>
     withProductsFixture('products-shuffled-order.json', (result) => {
-      // Fixture order: Nylon Spacer, Steel Ball Bearing, Stainless Steel Hex Nut
-      // (deliberately different from the committed config order).
+      // Fixture order: Plant Stake Arms, Foil Glitter Plastic Tablecloths,
+      // Crinkle Paper Filler (deliberately different from the committed
+      // config order).
       expect(result.failed).toBe(false);
-      const fixtureOrder = ['Nylon Spacer', 'Steel Ball Bearing', 'Stainless Steel Hex Nut'];
+      const fixtureOrder = ['Plant Stake Arms', 'Foil Glitter Plastic Tablecloths', 'Crinkle Paper Filler'];
 
       const html = readFixtureBuiltPage('products/index.html');
       const positions = fixtureOrder.map((name) => html.indexOf(name));

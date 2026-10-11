@@ -24,7 +24,9 @@ _Avoid_: Minimum order, batch size
 
 **Spec（规格）**:
 商品详情页参数表中的一行自定义键值对（如 Material: PP）。Specs 的键和值都由配置者自由定义，没有固定 schema。
-_Avoid_: Attribute, parameter, feature**Featured Product（精选商品）**:
+_Avoid_: Attribute, parameter, feature
+
+**Featured Product（精选商品）**:
 被标记为在 Home 页展示的 Product。一个商品可以既是精选又属于某分类，精选不改变归属，其在 Home 页的顺序由 Product Config 中的排列顺序决定。
 
 ### 询盘

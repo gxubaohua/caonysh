@@ -6,23 +6,21 @@
 // detail page. The "p" segment must never collide with a Category slug, so
 // Category Config validation rejects it.
 import { describe, expect, test } from 'vitest';
-import { readBuiltPage, withCategoriesFixture } from './helpers';
+import { readBuiltPage, withCategoriesFixture, removeFixtureOutDir } from './helpers';
 import { SITE_BASE } from './site-base';
 
 const productsHtml = readBuiltPage('products/index.html');
-const bearingsHtml = readBuiltPage('products/bearings/index.html');
+const tableclothsHtml = readBuiltPage('products/tablecloths/index.html');
 const homeHtml = readBuiltPage('index.html');
 
 describe('detail page URL /products/p/<slug>/ (built HTML seam)', () => {
   test('detail pages are served under /products/p/<slug>/', () => {
-    const bearing = readBuiltPage('products/p/steel-ball-bearing/index.html');
-    const nut = readBuiltPage('products/p/stainless-steel-hex-nut/index.html');
-    const spacer = readBuiltPage('products/p/nylon-spacer/index.html');
-    const gasket = readBuiltPage('products/p/nitrile-rubber-gasket/index.html');
-    expect(bearing).toContain('Steel Ball Bearing');
-    expect(nut).toContain('Stainless Steel Hex Nut');
-    expect(spacer).toContain('Nylon Spacer');
-    expect(gasket).toContain('Nitrile Rubber Gasket');
+    const tablecloths = readBuiltPage('products/p/foil-glitter-tablecloths/index.html');
+    const filler = readBuiltPage('products/p/crinkle-paper-filler/index.html');
+    const stakeArms = readBuiltPage('products/p/plant-stake-arms/index.html');
+    expect(tablecloths).toContain('Foil Glitter Plastic Tablecloths');
+    expect(filler).toContain('Crinkle Paper Filler');
+    expect(stakeArms).toContain('Plant Stake Arms');
   });
 
   test('no detail page route is generated under the old /products/item/ segment', () => {
@@ -34,26 +32,26 @@ describe('detail page URL /products/p/<slug>/ (built HTML seam)', () => {
 describe('every ProductCard links to its detail page (spec story 5)', () => {
   test('Products grid: each card link points at its own detail URL', () => {
     expect(productsHtml).toMatch(
-      new RegExp(`<a[^>]+href="${SITE_BASE}products/p/steel-ball-bearing/"[^>]*>[\\s\\S]*?Steel Ball Bearing`),
+      new RegExp(`<a[^>]+href="${SITE_BASE}products/p/foil-glitter-tablecloths/"[^>]*>[\\s\\S]*?Foil Glitter Plastic Tablecloths`),
     );
     expect(productsHtml).toMatch(
-      new RegExp(`<a[^>]+href="${SITE_BASE}products/p/stainless-steel-hex-nut/"[^>]*>[\\s\\S]*?Stainless Steel Hex Nut`),
+      new RegExp(`<a[^>]+href="${SITE_BASE}products/p/crinkle-paper-filler/"[^>]*>[\\s\\S]*?Crinkle Paper Filler`),
     );
     expect(productsHtml).toMatch(
-      new RegExp(`<a[^>]+href="${SITE_BASE}products/p/nylon-spacer/"[^>]*>[\\s\\S]*?Nylon Spacer`),
+      new RegExp(`<a[^>]+href="${SITE_BASE}products/p/plant-stake-arms/"[^>]*>[\\s\\S]*?Plant Stake Arms`),
     );
   });
 
   test('Category landing grid: each card link points at its own detail URL', () => {
-    expect(bearingsHtml).toMatch(
-      new RegExp(`<a[^>]+href="${SITE_BASE}products/p/steel-ball-bearing/"[^>]*>[\\s\\S]*?Steel Ball Bearing`),
+    expect(tableclothsHtml).toMatch(
+      new RegExp(`<a[^>]+href="${SITE_BASE}products/p/foil-glitter-tablecloths/"[^>]*>[\\s\\S]*?Foil Glitter Plastic Tablecloths`),
     );
-    expect(bearingsHtml).not.toContain('Stainless Steel Hex Nut');
+    expect(tableclothsHtml).not.toContain('Crinkle Paper Filler');
   });
 
   test('Home Featured section: the featured card links to its detail URL', () => {
     expect(homeHtml).toMatch(
-      new RegExp(`<a[^>]+href="${SITE_BASE}products/p/steel-ball-bearing/"[^>]*>[\\s\\S]*?Steel Ball Bearing`),
+      new RegExp(`<a[^>]+href="${SITE_BASE}products/p/foil-glitter-tablecloths/"[^>]*>[\\s\\S]*?Foil Glitter Plastic Tablecloths`),
     );
   });
 
@@ -73,8 +71,8 @@ describe('Category slug "p" is reserved for detail routes (config validation sea
         // The build must fail because the "p" category slug collides with the
         // detail route segment, and the error must name the offending category.
         expect(result.failed).toBe(true);
-        expect(result.output).toContain('Rotary Seals');
+        expect(result.output).toContain('Novelty Ribbon');
         expect(result.output).toMatch(/"p"/);
-      }),
+      }).then(removeFixtureOutDir),
   );
 });

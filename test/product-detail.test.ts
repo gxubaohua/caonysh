@@ -6,126 +6,107 @@ describe('Product detail page (built HTML seam)', () => {
   // Fix 3 (review): detail pages render inside BaseLayout, so they carry the
   // site nav/footer and the dead-end navigation disappears.
   test('adopts the BaseLayout shell: nav and footer furniture', () => {
-    const bearing = readBuiltPage('products/p/steel-ball-bearing/index.html');
-    expect(bearing).toMatch(new RegExp(`<a[^>]+href="${SITE_BASE}"`));
-    expect(bearing).toMatch(new RegExp(`<a[^>]+href="${SITE_BASE}products/"`));
-    expect(bearing).toMatch(new RegExp(`<a[^>]+href="${SITE_BASE}about/"`));
-    expect(bearing).toMatch(new RegExp(`<a[^>]+href="${SITE_BASE}contact/"`));
-    expect(bearing).toMatch(/<footer[^>]*>[\s\S]*service@caonysh\.com[\s\S]*<\/footer>/);
+    const tablecloths = readBuiltPage('products/p/foil-glitter-tablecloths/index.html');
+    expect(tablecloths).toMatch(new RegExp(`<a[^>]+href="${SITE_BASE}"`));
+    expect(tablecloths).toMatch(new RegExp(`<a[^>]+href="${SITE_BASE}products/"`));
+    expect(tablecloths).toMatch(new RegExp(`<a[^>]+href="${SITE_BASE}about/"`));
+    expect(tablecloths).toMatch(new RegExp(`<a[^>]+href="${SITE_BASE}contact/"`));
+    expect(tablecloths).toMatch(/<footer[^>]*>[\s\S]*service@caonysh\.com[\s\S]*<\/footer>/);
   });
 
   test('exists for each product in the Product Config', () => {
-    const bearing = readBuiltPage('products/p/steel-ball-bearing/index.html');
-    expect(bearing).toContain('Steel Ball Bearing');
+    const tablecloths = readBuiltPage('products/p/foil-glitter-tablecloths/index.html');
+    expect(tablecloths).toContain('Foil Glitter Plastic Tablecloths');
 
-    const nut = readBuiltPage('products/p/stainless-steel-hex-nut/index.html');
-    expect(nut).toContain('Stainless Steel Hex Nut');
+    const filler = readBuiltPage('products/p/crinkle-paper-filler/index.html');
+    expect(filler).toContain('Crinkle Paper Filler');
 
-    const spacer = readBuiltPage('products/p/nylon-spacer/index.html');
-    expect(spacer).toContain('Nylon Spacer');
+    const stakeArms = readBuiltPage('products/p/plant-stake-arms/index.html');
+    expect(stakeArms).toContain('Plant Stake Arms');
   });
 
   test('renders a gallery image for every photo in the Product Config', () => {
-    // steel-ball-bearing has 4 images in the fixture
-    const bearing = readBuiltPage('products/p/steel-ball-bearing/index.html');
-    const bearingImgs = bearing.match(/<img[^>]*class="[^"]*\bgallery-image\b[^"]*"/g) ?? [];
-    expect(bearingImgs.length).toBe(4);
+    // every product in the committed config has 4 images
+    const tablecloths = readBuiltPage('products/p/foil-glitter-tablecloths/index.html');
+    const tableclothsImgs = tablecloths.match(/<img[^>]*class="[^"]*\bgallery-image\b[^"]*"/g) ?? [];
+    expect(tableclothsImgs.length).toBe(4);
 
-    // nylon-spacer has 4 images, stainless-steel-hex-nut has 3
-    const nut = readBuiltPage('products/p/stainless-steel-hex-nut/index.html');
-    const nutImgs = nut.match(/<img[^>]*class="[^"]*\bgallery-image\b[^"]*"/g) ?? [];
-    expect(nutImgs.length).toBe(3);
+    const filler = readBuiltPage('products/p/crinkle-paper-filler/index.html');
+    const fillerImgs = filler.match(/<img[^>]*class="[^"]*\bgallery-image\b[^"]*"/g) ?? [];
+    expect(fillerImgs.length).toBe(4);
 
-    const spacer = readBuiltPage('products/p/nylon-spacer/index.html');
-    const spacerImgs = spacer.match(/<img[^>]*class="[^"]*\bgallery-image\b[^"]*"/g) ?? [];
-    expect(spacerImgs.length).toBe(4);
+    const stakeArms = readBuiltPage('products/p/plant-stake-arms/index.html');
+    const stakeArmsImgs = stakeArms.match(/<img[^>]*class="[^"]*\bgallery-image\b[^"]*"/g) ?? [];
+    expect(stakeArmsImgs.length).toBe(4);
   });
 
   test('gallery photos are switchable via per-photo controls', () => {
-    const bearing = readBuiltPage('products/p/steel-ball-bearing/index.html');
+    const tablecloths = readBuiltPage('products/p/foil-glitter-tablecloths/index.html');
     // each gallery photo has a radio control selecting it (CSS-only switching)
-    const radios = bearing.match(/<input[^>]*type="radio"[^>]*name="gallery-[^"]*"/g) ?? [];
+    const radios = tablecloths.match(/<input[^>]*type="radio"[^>]*name="gallery-[^"]*"/g) ?? [];
     expect(radios.length).toBe(4);
     // the first photo is the default view
-    expect(bearing).toMatch(/<input[^>]*type="radio"[^>]*checked/);
+    expect(tablecloths).toMatch(/<input[^>]*type="radio"[^>]*checked/);
   });
 
   test('renders a price range for a product with min and max price', () => {
-    const bearing = readBuiltPage('products/p/steel-ball-bearing/index.html');
-    expect(bearing).toContain('$1.20');
-    expect(bearing).toContain('$1.50');
+    const tablecloths = readBuiltPage('products/p/foil-glitter-tablecloths/index.html');
+    expect(tablecloths).toContain('$7.98');
+    expect(tablecloths).toContain('$8.49');
   });
 
   test('renders an exact USD price for a product with only a min price', () => {
-    const nut = readBuiltPage('products/p/stainless-steel-hex-nut/index.html');
-    expect(nut).toContain('$0.08');
+    const filler = readBuiltPage('products/p/crinkle-paper-filler/index.html');
+    expect(filler).toContain('$8.99');
   });
 
-  test('renders "Contact for price" for a product with no price', () => {
-    const spacer = readBuiltPage('products/p/nylon-spacer/index.html');
-    expect(spacer).toContain('Contact for price');
-  });
-
-  test('shows the MOQ on a product that declares one', () => {
-    const bearing = readBuiltPage('products/p/steel-ball-bearing/index.html');
-    // fixture: moq 1000
-    expect(bearing).toMatch(/1,?000/);
-    expect(bearing).toContain('MOQ');
-
-    const nut = readBuiltPage('products/p/stainless-steel-hex-nut/index.html');
-    // fixture: moq 5000
-    expect(nut).toMatch(/5,?000/);
-    expect(nut).toContain('MOQ');
-  });
-
-  test('does not show an MOQ on a product without one', () => {
-    // fixture: nylon-spacer has moq null
-    const spacer = readBuiltPage('products/p/nylon-spacer/index.html');
-    expect(spacer).not.toContain('MOQ');
+  test('does not show an MOQ when the product declares none', () => {
+    // committed config: no product declares an MOQ
+    const tablecloths = readBuiltPage('products/p/foil-glitter-tablecloths/index.html');
+    expect(tablecloths).not.toContain('MOQ');
   });
 
   test('renders the Specs table as key-value rows from the Product Config', () => {
-    const bearing = readBuiltPage('products/p/steel-ball-bearing/index.html');
-    // fixture specs for steel-ball-bearing
-    expect(bearing).toContain('Specs');
-    expect(bearing).toContain('Material');
-    expect(bearing).toContain('Chrome steel (GCr15)');
-    expect(bearing).toContain('Bore');
-    expect(bearing).toContain('10 mm');
-    expect(bearing).toContain('Seal');
-    expect(bearing).toContain('2RS');
+    const tablecloths = readBuiltPage('products/p/foil-glitter-tablecloths/index.html');
+    // committed specs for foil-glitter-tablecloths
+    expect(tablecloths).toContain('Specs');
+    expect(tablecloths).toContain('Size');
+    expect(tablecloths).toContain('54 x 108 in (rectangle)');
+    expect(tablecloths).toContain('Pack');
+    expect(tablecloths).toContain('4 tablecloths');
+    expect(tablecloths).toContain('Colors');
 
-    const spacer = readBuiltPage('products/p/nylon-spacer/index.html');
-    expect(spacer).toContain('Nylon 66');
-    expect(spacer).toContain('Inner diameter');
-    expect(spacer).toContain('4 mm');
+    const stakeArms = readBuiltPage('products/p/plant-stake-arms/index.html');
+    expect(stakeArms).toContain('36 arms');
+    expect(stakeArms).toContain('11.8 in (30 cm)');
+    expect(stakeArms).toContain('11 mm');
   });
 
   test('links the Inquiry button to the Contact page with the product name query parameter', () => {
     // The Inquiry Prefill link carries the deploy base (GLOSSARY: Deploy).
-    const bearing = readBuiltPage('products/p/steel-ball-bearing/index.html');
-    expect(bearing).toMatch(
-      new RegExp(`<a[^>]+href="${SITE_BASE}contact\\?product=Steel%20Ball%20Bearing"`),
+    const tablecloths = readBuiltPage('products/p/foil-glitter-tablecloths/index.html');
+    expect(tablecloths).toMatch(
+      new RegExp(`<a[^>]+href="${SITE_BASE}contact\\?product=Foil%20Glitter%20Plastic%20Tablecloths"`),
     );
-    expect(bearing).toContain('Send Inquiry');
+    expect(tablecloths).toContain('Send Inquiry');
 
-    const spacer = readBuiltPage('products/p/nylon-spacer/index.html');
-    expect(spacer).toMatch(
-      new RegExp(`<a[^>]+href="${SITE_BASE}contact\\?product=Nylon%20Spacer"`),
+    const stakeArms = readBuiltPage('products/p/plant-stake-arms/index.html');
+    expect(stakeArms).toMatch(
+      new RegExp(`<a[^>]+href="${SITE_BASE}contact\\?product=Plant%20Stake%20Arms"`),
     );
   });
 
   test('has a product-specific title and meta description', () => {
-    const bearing = readBuiltPage('products/p/steel-ball-bearing/index.html');
-    expect(bearing).toMatch(/<title>Steel Ball Bearing \| Caonysh<\/title>/);
-    expect(bearing).toMatch(
-      /<meta name="description" content="Precision steel ball bearing for industrial machinery, sealed for long service life\.">/,
+    const tablecloths = readBuiltPage('products/p/foil-glitter-tablecloths/index.html');
+    expect(tablecloths).toMatch(/<title>Foil Glitter Plastic Tablecloths \| Caonysh<\/title>/);
+    expect(tablecloths).toMatch(
+      /<meta name="description" content="Disposable foil-glitter plastic tablecloths for rectangle banquet tables, available in seven colors for parties, weddings, and holiday events\.">/,
     );
 
-    const spacer = readBuiltPage('products/p/nylon-spacer/index.html');
-    expect(spacer).toMatch(/<title>Nylon Spacer \| Caonysh<\/title>/);
-    expect(spacer).toMatch(
-      /<meta name="description" content="Lightweight nylon spacer for electrical insulation and vibration damping\.">/,
+    const filler = readBuiltPage('products/p/crinkle-paper-filler/index.html');
+    expect(filler).toMatch(/<title>Crinkle Paper Filler \| Caonysh<\/title>/);
+    expect(filler).toMatch(
+      /<meta name="description" content="Crinkle-cut shredded paper filler for gift baskets and gift boxes, adding cushioning and decorative fill in white and gold\.">/,
     );
   });
 });

@@ -12,11 +12,11 @@ describe('image path validation (build process seam)', () => {
     { timeout: 10 * 60 * 1000 },
     () =>
       // Fixture: committed Product Config with a typo'd second image path on
-      // nitrile-rubber-gasket.
+      // crinkle-paper-filler.
       withProductsFixture('products-image-typo.json', (result) => {
         expect(result.failed).toBe(true);
-        expect(result.output).toContain('Nitrile Rubber Gasket');
-        expect(result.output).toMatch(/nitrile-rubber-gasket-typo\.png/);
+        expect(result.output).toContain('Crinkle Paper Filler');
+        expect(result.output).toMatch(/crinkle-paper-filler-typo\.jpg/);
       }).then(removeFixtureOutDir),
   );
 });

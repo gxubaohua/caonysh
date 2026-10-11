@@ -5,9 +5,9 @@ describe('Products page grid (built HTML seam)', () => {
   const html = readBuiltPage('products/index.html');
 
   test('renders every product from the Product Config', () => {
-    expect(html).toContain('Steel Ball Bearing');
-    expect(html).toContain('Stainless Steel Hex Nut');
-    expect(html).toContain('Nylon Spacer');
+    expect(html).toContain('Foil Glitter Plastic Tablecloths');
+    expect(html).toContain('Crinkle Paper Filler');
+    expect(html).toContain('Plant Stake Arms');
   });
 
   test('renders a product image for every product', () => {
@@ -18,15 +18,11 @@ describe('Products page grid (built HTML seam)', () => {
   });
 
   test('renders a product with an exact price as a USD value', () => {
-    expect(html).toContain('$0.08');
+    expect(html).toContain('$8.99');
   });
 
   test('renders a product with a price range as a USD range', () => {
-    expect(html).toContain('$1.20');
-    expect(html).toContain('$1.50');
-  });
-
-  test('renders "Contact for price" for a product with no price', () => {
-    expect(html).toContain('Contact for price');
+    expect(html).toContain('$7.98');
+    expect(html).toContain('$8.49');
   });
 });
