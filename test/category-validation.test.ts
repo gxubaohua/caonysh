@@ -18,7 +18,7 @@ describe('Build validation: product references an undefined category (built HTML
     () =>
       withProductsFixture('products-undefined-category.json', (result) => {
         expect(result.failed).toBe(true);
-        expect(result.output).toContain('Foil Glitter Plastic Tablecloths');
+        expect(result.output).toContain('4 Pack Iridescent Plastic Tablecloths');
         expect(result.output.toLowerCase()).toContain('category');
       }).then(removeFixtureOutDir),
   );

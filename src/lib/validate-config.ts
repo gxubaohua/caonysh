@@ -26,7 +26,8 @@ const DETAIL_ROUTE_SEGMENT = 'p';
  *   file under src/assets/;
  * - a Product has no category, or references a category slug that Category
  *   Config does not define;
- * - a Category slug collides with the reserved detail-route segment.
+ * - a Category slug collides with the reserved detail-route segment;
+ * - a Product declares `bullets` that is not an array of non-empty strings.
  * A missing price key is *not* an error: the Price Strategy is two-state
  * and an absent key means "Contact for price", same as null (ADR-0004).
  */
@@ -62,6 +63,15 @@ export function validateProductConfig(): void {
     } else if (!definedCategorySlugs.has(product.category)) {
       problems.push(
         `Product "${product.name}" references category "${product.category}", which is not defined in Category Config (src/content/categories.json).`,
+      );
+    }
+    if (
+      product.bullets !== undefined &&
+      (!Array.isArray(product.bullets) ||
+        product.bullets.some((bullet) => typeof bullet !== 'string' || bullet.trim() === ''))
+    ) {
+      problems.push(
+        `Product '${product.name}' declares bullets that is not an array of non-empty strings.`,
       );
     }
   }

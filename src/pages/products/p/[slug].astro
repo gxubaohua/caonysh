@@ -30,9 +30,62 @@ const inquiryHref = sitePath(`/contact?product=${encodeURIComponent(product.name
 <BaseLayout title={`${product.name} | ${site.companyName}`} description={product.description}>
   <h1>{product.name}</h1>
   <ProductGallery product={product} />
-  <p>{product.description}</p>
   <p class="price">{formatPrice(product.price)}</p>
   {product.moq != null && <p class="moq">MOQ: {product.moq.toLocaleString('en-US')}</p>}
+  {product.description && <p class="description">{product.description}</p>}
+  {product.bullets && product.bullets.length > 0 && (
+    <ul class="bullets">
+      {product.bullets.map((bullet: string) => <li>{bullet}</li>)}
+    </ul>
+  )}
   <SpecTable product={product} />
   <a class="inquiry-button" href={inquiryHref}>Send Inquiry</a>
 </BaseLayout>
+
+<style>
+  /* Price is the conversion-critical number on a B2B inquiry page: render it
+     larger, bolder, and in the accent color, above the fold of the copy. */
+  .price {
+    margin: 0.75rem 0;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--color-accent-dark);
+  }
+
+  .moq {
+    margin: 0.25rem 0 1rem;
+    color: var(--color-muted);
+  }
+
+  .description {
+    max-width: 46rem;
+  }
+
+  /* Bullet Points (GLOSSARY): the verbatim Amazon selling points, rendered
+     as a list on the detail page only. */
+  .bullets {
+    max-width: 46rem;
+    padding-left: 1.25rem;
+    line-height: 1.55;
+  }
+
+  .bullets li {
+    margin: 0.4rem 0;
+  }
+
+  .inquiry-button {
+    display: inline-block;
+    margin-top: 1.5rem;
+    background: var(--color-accent);
+    color: #fff;
+    padding: 0.7rem 1.6rem;
+    border-radius: 999px;
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .inquiry-button:hover {
+    background: var(--color-accent-dark);
+    color: #fff;
+  }
+</style>

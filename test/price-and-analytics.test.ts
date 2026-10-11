@@ -13,11 +13,12 @@ describe('Price Strategy with the price key absent (built HTML seam)', () => {
     'a product without a price key builds and renders "Contact for price"',
     { timeout: 10 * 60 * 1000 },
     () =>
-      // The fixture is the committed Product Config with crinkle-paper-filler's
-      // `price` key deleted (rather than set to null).
+      // The fixture is the committed Product Config with
+      // crinkle-paper-filler-white-gold's `price` key deleted (rather than
+      // set to null).
       withProductsFixture('products-price-key-absent.json', (result) => {
         expect(result.failed).toBe(false);
-        const detail = readFixtureBuiltPage('products/p/crinkle-paper-filler/index.html');
+        const detail = readFixtureBuiltPage('products/p/crinkle-paper-filler-white-gold/index.html');
         expect(detail).toContain('Contact for price');
         const grid = readFixtureBuiltPage('products/index.html');
         expect(grid).toContain('Contact for price');

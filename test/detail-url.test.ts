@@ -15,12 +15,12 @@ const homeHtml = readBuiltPage('index.html');
 
 describe('detail page URL /products/p/<slug>/ (built HTML seam)', () => {
   test('detail pages are served under /products/p/<slug>/', () => {
-    const tablecloths = readBuiltPage('products/p/foil-glitter-tablecloths/index.html');
-    const filler = readBuiltPage('products/p/crinkle-paper-filler/index.html');
-    const stakeArms = readBuiltPage('products/p/plant-stake-arms/index.html');
-    expect(tablecloths).toContain('Foil Glitter Plastic Tablecloths');
-    expect(filler).toContain('Crinkle Paper Filler');
-    expect(stakeArms).toContain('Plant Stake Arms');
+    const tablecloths = readBuiltPage('products/p/foil-glitter-tablecloth-iridescent/index.html');
+    const filler = readBuiltPage('products/p/crinkle-paper-filler-white-gold/index.html');
+    const stakeArms = readBuiltPage('products/p/plant-stake-arms-36-pcs/index.html');
+    expect(tablecloths).toContain('Iridescent Plastic Tablecloths Disposable Table Cover');
+    expect(filler).toContain('Crinkle Paper Filler for Gift Baskets Gift Boxes(White&amp;Gold)');
+    expect(stakeArms).toContain('36PCS Plant Stake Arms for Tomato Cage');
   });
 
   test('no detail page route is generated under the old /products/item/ segment', () => {
@@ -32,26 +32,26 @@ describe('detail page URL /products/p/<slug>/ (built HTML seam)', () => {
 describe('every ProductCard links to its detail page (spec story 5)', () => {
   test('Products grid: each card link points at its own detail URL', () => {
     expect(productsHtml).toMatch(
-      new RegExp(`<a[^>]+href="${SITE_BASE}products/p/foil-glitter-tablecloths/"[^>]*>[\\s\\S]*?Foil Glitter Plastic Tablecloths`),
+      new RegExp(`<a[^>]+href="${SITE_BASE}products/p/foil-glitter-tablecloth-iridescent/"[^>]*>[\\s\\S]*?Iridescent Plastic Tablecloths Disposable Table Cover`),
     );
     expect(productsHtml).toMatch(
-      new RegExp(`<a[^>]+href="${SITE_BASE}products/p/crinkle-paper-filler/"[^>]*>[\\s\\S]*?Crinkle Paper Filler`),
+      new RegExp(`<a[^>]+href="${SITE_BASE}products/p/crinkle-paper-filler-white-gold/"[^>]*>[\\s\\S]*?Crinkle Paper Filler for Gift Baskets Gift Boxes\\(White&amp;Gold\\)`),
     );
     expect(productsHtml).toMatch(
-      new RegExp(`<a[^>]+href="${SITE_BASE}products/p/plant-stake-arms/"[^>]*>[\\s\\S]*?Plant Stake Arms`),
+      new RegExp(`<a[^>]+href="${SITE_BASE}products/p/plant-stake-arms-36-pcs/"[^>]*>[\\s\\S]*?36PCS Plant Stake Arms for Tomato Cage`),
     );
   });
 
   test('Category landing grid: each card link points at its own detail URL', () => {
     expect(tableclothsHtml).toMatch(
-      new RegExp(`<a[^>]+href="${SITE_BASE}products/p/foil-glitter-tablecloths/"[^>]*>[\\s\\S]*?Foil Glitter Plastic Tablecloths`),
+      new RegExp(`<a[^>]+href="${SITE_BASE}products/p/foil-glitter-tablecloth-iridescent/"[^>]*>[\\s\\S]*?Iridescent Plastic Tablecloths Disposable Table Cover`),
     );
-    expect(tableclothsHtml).not.toContain('Crinkle Paper Filler');
+    expect(tableclothsHtml).not.toContain('Crinkle Paper Filler for Gift Baskets Gift Boxes(White&amp;Gold)');
   });
 
   test('Home Featured section: the featured card links to its detail URL', () => {
     expect(homeHtml).toMatch(
-      new RegExp(`<a[^>]+href="${SITE_BASE}products/p/foil-glitter-tablecloths/"[^>]*>[\\s\\S]*?Foil Glitter Plastic Tablecloths`),
+      new RegExp(`<a[^>]+href="${SITE_BASE}products/p/foil-glitter-tablecloth-iridescent/"[^>]*>[\\s\\S]*?Iridescent Plastic Tablecloths Disposable Table Cover`),
     );
   });
 

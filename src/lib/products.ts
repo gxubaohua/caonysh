@@ -18,6 +18,9 @@ export interface Product {
   category: string;
   images: string[];
   description: string;
+  // Bullet Points (GLOSSARY): verbatim selling points rendered as a list on
+  // the detail page only. Optional; absent key renders no list.
+  bullets?: string[];
   // Two-state Price Strategy (ADR-0004). Optional at runtime: a missing key
   // in Product Config means the same as null — "Contact for price".
   price?: Price | null;

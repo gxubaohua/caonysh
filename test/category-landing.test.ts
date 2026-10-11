@@ -32,12 +32,12 @@ describe('Category landing pages (built HTML seam)', () => {
     const tablecloths = readBuiltPage('products/tablecloths/index.html');
     const giftPackaging = readBuiltPage('products/gift-packaging/index.html');
     const gardenSupplies = readBuiltPage('products/garden-supplies/index.html');
-    expect(tablecloths).toContain('Foil Glitter Plastic Tablecloths');
-    expect(tablecloths).not.toContain('Crinkle Paper Filler');
-    expect(giftPackaging).toContain('Crinkle Paper Filler');
-    expect(giftPackaging).not.toContain('Foil Glitter Plastic Tablecloths');
-    expect(gardenSupplies).toContain('Plant Stake Arms');
-    expect(gardenSupplies).not.toContain('Crinkle Paper Filler');
+    expect(tablecloths).toContain('Iridescent Plastic Tablecloths Disposable Table Cover');
+    expect(tablecloths).not.toContain('Crinkle Paper Filler for Gift Baskets Gift Boxes(White&amp;Gold)');
+    expect(giftPackaging).toContain('Crinkle Paper Filler for Gift Baskets Gift Boxes(White&amp;Gold)');
+    expect(giftPackaging).not.toContain('Iridescent Plastic Tablecloths Disposable Table Cover');
+    expect(gardenSupplies).toContain('36PCS Plant Stake Arms for Tomato Cage');
+    expect(gardenSupplies).not.toContain('Crinkle Paper Filler for Gift Baskets Gift Boxes(White&amp;Gold)');
   });
 
   test('renders the category description when one is configured', () => {

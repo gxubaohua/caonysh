@@ -7,7 +7,7 @@
 ### 商品目录
 
 **Product（商品）**:
-一个可被海外买家询价的最小销售单元，由图片、名称、描述、价格策略、MOQ 和规格构成。整个网站围绕它组织。
+一个可被海外买家询价的最小销售单元，由图片、名称、描述、价格策略、MOQ 和规格构成。整个网站围绕它组织。同一 Amazon listing 的每个颜色/型号变体各算一个 Product（ADR-0006）。
 _Avoid_: Item, goods, SKU（SKU 暗示库存管理，本站没有）
 
 **Category（分类）**:
@@ -29,6 +29,10 @@ _Avoid_: Attribute, parameter, feature
 **Featured Product（精选商品）**:
 被标记为在 Home 页展示的 Product。一个商品可以既是精选又属于某分类，精选不改变归属，其在 Home 页的顺序由 Product Config 中的排列顺序决定。
 
+**Bullet Points（五点描述）**:
+商品详情页上以列表呈现的卖点文案，逐字来自对应 Amazon listing 的五点描述（不做翻译、不做改写）。仅在详情页渲染，商品卡片不展示；可选字段，缺省则不渲染列表。
+_Avoid_: Features, highlights, key points（feature 与 Spec 的 _Avoid_ 词冲突，需保持区分）
+
 ### 询盘
 
 **Inquiry（询盘）**:
@@ -42,7 +46,7 @@ _Avoid_: Product context, auto-fill
 ### 内容配置
 
 **Product Config（商品配置）**:
-仓库 `src/content/` 下定义全部商品（名称、分类、价格策略、MOQ、图片、描述、Specs）的 JSON 文件。文件内的排列顺序即页面展示顺序，修改它并 push 即完成商品更新，这是"前端配置"的唯一入口。构建时校验：商品缺图或缺分类直接构建失败。
+仓库 `src/content/` 下定义全部商品（名称、分类、价格策略、MOQ、图片、描述、五点描述、Specs）的 JSON 文件。文件内的排列顺序即页面展示顺序，修改它并 push 即完成商品更新，这是"前端配置"的唯一入口。构建时校验：商品缺图或缺分类直接构建失败。
 _Avoid_: Database, CMS
 
 **Site Config（站点配置）**:

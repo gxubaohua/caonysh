@@ -1,39 +1,621 @@
 [
   {
-    "slug": "plant-stake-arms",
-    "name": "Plant Stake Arms",
+    "slug": "plant-stake-arms-60-pcs",
+    "name": "60PCS Plant Stake Arms for Tomato Cage，Expandable 11.8\" Plant Supports Trellis Connector Clips for 11mm Garden Plants Stakes Stand Outdoor/Indoor",
     "category": "garden-supplies",
-    "images": ["../assets/plant-stake-arms.jpg"],
-    "description": "Expandable connector arms that join plant stakes into cages and trellises, supporting tomatoes and climbing plants indoors and outdoors.",
-    "price": { "min": 11.99 },
+    "images": [
+      "../assets/plant-stake-arms-60-pcs.jpg",
+      "../assets/plant-stake-arms-60-pcs-1.jpg",
+      "../assets/plant-stake-arms-60-pcs-2.jpg",
+      "../assets/plant-stake-arms-60-pcs-3.jpg"
+    ],
+    "description": "60-pack expandable plant stake arms (11.8 in, 2 buckles) that join 11 mm stakes into tomato cages and trellises for vegetables and climbing plants.",
+    "bullets": [
+      "Package includes 36 pcs tomato cage connectors. Length: 11.8 Inch with 2 Buckles. Specifically crafted for the 7/16&#34; (11mm) plant stakes.",
+      "User-friendly：The garden stake connectors are designed for ease of use, simply connect the plant stakes to the connectors, and you're ready to assemble your custom support structure, eliminating the need for complex tools or technical knowledge",
+      "High Quality: Made of strong plastic, durable, light weight, weatherproof , can be reused. These plant stake connectors ensure a snug and secure fit, giving your plants the stability they need to thrive.",
+      "Effortlessly create perfect support structure for plants : With these stake connectors, you have the flexibility to construct various support configurations, the classic triangle or square plant support cages, perfectly matches the growth pattern and structure of your plants.",
+      "Use with plant stakes to build supports: These stake arms providing an ultra-secure connection between plant stakes that is ideal for creating tomato, vegetables, fruit, climbing crop, peony and flower supports"
+    ],
+    "price": {
+      "min": 19.99
+    },
+    "specs": {
+      "Pack": "60 arms",
+      "Expanded length": "11.8 in (30 cm)",
+      "Fits stake diameter": "11 mm (7/16 in)"
+    }
+  },
+  {
+    "slug": "plant-stake-arms-36-pcs",
+    "name": "36PCS Plant Stake Arms for Tomato Cage，Expandable 11.8\" Plant Supports Trellis Connector Clips for 11mm Garden Plants Stakes Stand Outdoor/Indoor",
+    "category": "garden-supplies",
+    "images": [
+      "../assets/plant-stake-arms-36-pcs.jpg",
+      "../assets/plant-stake-arms-36-pcs-1.jpg",
+      "../assets/plant-stake-arms-36-pcs-2.jpg",
+      "../assets/plant-stake-arms-36-pcs-3.jpg",
+      "../assets/plant-stake-arms-36-pcs-4.jpg"
+    ],
+    "description": "36-pack expandable plant stake arms (11.8 in, 2 buckles) that join 11 mm stakes into tomato cages and trellises for vegetables and climbing plants.",
+    "bullets": [
+      "Package includes 36 pcs tomato cage connectors. Length: 11.8 Inch with 2 Buckles. Specifically crafted for the 7/16&#34; (11mm) plant stakes.",
+      "User-friendly：The garden stake connectors are designed for ease of use, simply connect the plant stakes to the connectors, and you're ready to assemble your custom support structure, eliminating the need for complex tools or technical knowledge",
+      "High Quality: Made of strong plastic, durable, light weight, weatherproof , can be reused. These plant stake connectors ensure a snug and secure fit, giving your plants the stability they need to thrive.",
+      "Effortlessly create perfect support structure for plants : With these stake connectors, you have the flexibility to construct various support configurations, the classic triangle or square plant support cages, perfectly matches the growth pattern and structure of your plants.",
+      "Use with plant stakes to build supports: These stake arms providing an ultra-secure connection between plant stakes that is ideal for creating tomato, vegetables, fruit, climbing crop, peony and flower supports"
+    ],
+    "price": {
+      "min": 11.99
+    },
     "featured": true,
     "specs": {
       "Pack": "36 arms",
       "Expanded length": "11.8 in (30 cm)",
-      "Fits stake diameter": "11 mm"
+      "Fits stake diameter": "11 mm (7/16 in)"
     }
   },
   {
-    "slug": "foil-glitter-tablecloths",
-    "name": "Foil Glitter Plastic Tablecloths",
+    "slug": "crinkle-paper-filler-red",
+    "name": "Caonysh 8.5oz Crinkle Paper Filler for Gift Baskets Gift Boxes(Red)",
+    "category": "gift-packaging",
+    "images": [
+      "../assets/crinkle-paper-filler-red.jpg",
+      "../assets/crinkle-paper-filler-red-1.jpg",
+      "../assets/crinkle-paper-filler-red-2.jpg",
+      "../assets/crinkle-paper-filler-red-3.jpg",
+      "../assets/crinkle-paper-filler-red-4.jpg",
+      "../assets/crinkle-paper-filler-red-5.jpg",
+      "../assets/crinkle-paper-filler-red-6.jpg",
+      "../assets/crinkle-paper-filler-red-7.jpg"
+    ],
+    "description": "Crinkle-cut shredded paper filler in red, 8.5 oz, for stuffing gift baskets and gift boxes with cushioning and decorative fill.",
+    "bullets": [
+      "Perfect Size & Weight: Our crinkle paper filler comes in a generous 8.5oz package, providing you with enough material to fill multiple small gifts baskets, boxes, or decorative items",
+      "Versatile Use: Whether you need to stuff gift baskets, cushion delicate items during shipping, or add a decorative touch to your packaging, this shredded paper is the perfect solution",
+      "Eco-Friendly Material: Made from high-quality, recyclable paper, ensuing a sustainable option for your decorative needs",
+      "Eye-Catching Appearance: Unique crinkled texture, take your packaging and decorations to the next level. Great for Easter baskets, Christmas packaging, wedding party favor, and craft projects. Add a colorful and festive touch to any occasion",
+      "Vibrant Colors Available: Choose from a variety of vibrant colors to match your theme or event, making your presentations stand out"
+    ],
+    "price": {
+      "min": 8.99
+    },
+    "specs": {
+      "Weight": "8.5 oz (240 g)",
+      "Color": "Red",
+      "Use": "Gift basket and gift box filler"
+    }
+  },
+  {
+    "slug": "crinkle-paper-filler-white",
+    "name": "Caonysh 8.5oz Crinkle Paper Filler for Gift Baskets Gift Boxes(White)",
+    "category": "gift-packaging",
+    "images": [
+      "../assets/crinkle-paper-filler-white.jpg",
+      "../assets/crinkle-paper-filler-white-1.jpg",
+      "../assets/crinkle-paper-filler-white-2.jpg",
+      "../assets/crinkle-paper-filler-white-3.jpg",
+      "../assets/crinkle-paper-filler-white-4.jpg",
+      "../assets/crinkle-paper-filler-white-5.jpg",
+      "../assets/crinkle-paper-filler-white-6.jpg",
+      "../assets/crinkle-paper-filler-white-7.jpg"
+    ],
+    "description": "Crinkle-cut shredded paper filler in white, 8.5 oz, for stuffing gift baskets and gift boxes with cushioning and decorative fill.",
+    "bullets": [
+      "Perfect Size & Weight: Our crinkle paper filler comes in a generous 8.5oz package, providing you with enough material to fill multiple small gifts baskets, boxes, or decorative items",
+      "Versatile Use: Whether you need to stuff gift baskets, cushion delicate items during shipping, or add a decorative touch to your packaging, this shredded paper is the perfect solution",
+      "Eco-Friendly Material: Made from high-quality, recyclable paper, ensuing a sustainable option for your decorative needs",
+      "Eye-Catching Appearance: Unique crinkled texture, take your packaging and decorations to the next level. Great for Easter baskets, Christmas packaging, wedding party favor, and craft projects. Add a colorful and festive touch to any occasion",
+      "Vibrant Colors Available: Choose from a variety of vibrant colors to match your theme or event, making your presentations stand out"
+    ],
+    "price": {
+      "min": 8.99
+    },
+    "specs": {
+      "Weight": "8.5 oz (240 g)",
+      "Color": "White",
+      "Use": "Gift basket and gift box filler"
+    }
+  },
+  {
+    "slug": "crinkle-paper-filler-black",
+    "name": "Caonysh 8.5oz Crinkle Paper Filler for Gift Baskets Gift Boxes(Black)",
+    "category": "gift-packaging",
+    "images": [
+      "../assets/crinkle-paper-filler-black.jpg",
+      "../assets/crinkle-paper-filler-black-1.jpg",
+      "../assets/crinkle-paper-filler-black-2.jpg",
+      "../assets/crinkle-paper-filler-black-3.jpg",
+      "../assets/crinkle-paper-filler-black-4.jpg",
+      "../assets/crinkle-paper-filler-black-5.jpg",
+      "../assets/crinkle-paper-filler-black-6.jpg",
+      "../assets/crinkle-paper-filler-black-7.jpg"
+    ],
+    "description": "Crinkle-cut shredded paper filler in black, 8.5 oz, for stuffing gift baskets and gift boxes with cushioning and decorative fill.",
+    "bullets": [
+      "Perfect Size & Weight: Our crinkle paper filler comes in a generous 8.5oz package, providing you with enough material to fill multiple small gifts baskets, boxes, or decorative items",
+      "Versatile Use: Whether you need to stuff gift baskets, cushion delicate items during shipping, or add a decorative touch to your packaging, this shredded paper is the perfect solution",
+      "Eco-Friendly Material: Made from high-quality, recyclable paper, ensuing a sustainable option for your decorative needs",
+      "Eye-Catching Appearance: Unique crinkled texture, take your packaging and decorations to the next level. Great for Easter baskets, Christmas packaging, wedding party favor, and craft projects. Add a colorful and festive touch to any occasion",
+      "Vibrant Colors Available: Choose from a variety of vibrant colors to match your theme or event, making your presentations stand out"
+    ],
+    "price": {
+      "min": 8.99
+    },
+    "specs": {
+      "Weight": "8.5 oz (240 g)",
+      "Color": "Black",
+      "Use": "Gift basket and gift box filler"
+    }
+  },
+  {
+    "slug": "crinkle-paper-filler-pink",
+    "name": "Caonysh 8.5oz Crinkle Paper Filler for Gift Baskets Gift Boxes(Pink)",
+    "category": "gift-packaging",
+    "images": [
+      "../assets/crinkle-paper-filler-pink.jpg",
+      "../assets/crinkle-paper-filler-pink-1.jpg",
+      "../assets/crinkle-paper-filler-pink-2.jpg",
+      "../assets/crinkle-paper-filler-pink-3.jpg",
+      "../assets/crinkle-paper-filler-pink-4.jpg",
+      "../assets/crinkle-paper-filler-pink-5.jpg",
+      "../assets/crinkle-paper-filler-pink-6.jpg",
+      "../assets/crinkle-paper-filler-pink-7.jpg"
+    ],
+    "description": "Crinkle-cut shredded paper filler in pink, 8.5 oz, for stuffing gift baskets and gift boxes with cushioning and decorative fill.",
+    "bullets": [
+      "Perfect Size & Weight: Our crinkle paper filler comes in a generous 8.5oz package, providing you with enough material to fill multiple small gifts baskets, boxes, or decorative items",
+      "Versatile Use: Whether you need to stuff gift baskets, cushion delicate items during shipping, or add a decorative touch to your packaging, this shredded paper is the perfect solution",
+      "Eco-Friendly Material: Made from high-quality, recyclable paper, ensuing a sustainable option for your decorative needs",
+      "Eye-Catching Appearance: Unique crinkled texture, take your packaging and decorations to the next level. Great for Easter baskets, Christmas packaging, wedding party favor, and craft projects. Add a colorful and festive touch to any occasion",
+      "Vibrant Colors Available: Choose from a variety of vibrant colors to match your theme or event, making your presentations stand out"
+    ],
+    "price": {
+      "min": 8.99
+    },
+    "specs": {
+      "Weight": "8.5 oz (240 g)",
+      "Color": "Pink",
+      "Use": "Gift basket and gift box filler"
+    }
+  },
+  {
+    "slug": "crinkle-paper-filler-green",
+    "name": "Caonysh 8.5oz Crinkle Paper Filler for Gift Baskets Gift Boxes(Green)",
+    "category": "gift-packaging",
+    "images": [
+      "../assets/crinkle-paper-filler-green.jpg",
+      "../assets/crinkle-paper-filler-green-1.jpg",
+      "../assets/crinkle-paper-filler-green-2.jpg",
+      "../assets/crinkle-paper-filler-green-3.jpg",
+      "../assets/crinkle-paper-filler-green-4.jpg",
+      "../assets/crinkle-paper-filler-green-5.jpg",
+      "../assets/crinkle-paper-filler-green-6.jpg",
+      "../assets/crinkle-paper-filler-green-7.jpg"
+    ],
+    "description": "Crinkle-cut shredded paper filler in green, 8.5 oz, for stuffing gift baskets and gift boxes with cushioning and decorative fill.",
+    "bullets": [
+      "Perfect Size & Weight: Our crinkle paper filler comes in a generous 8.5oz package, providing you with enough material to fill multiple small gifts baskets, boxes, or decorative items",
+      "Versatile Use: Whether you need to stuff gift baskets, cushion delicate items during shipping, or add a decorative touch to your packaging, this shredded paper is the perfect solution",
+      "Eco-Friendly Material: Made from high-quality, recyclable paper, ensuing a sustainable option for your decorative needs",
+      "Eye-Catching Appearance: Unique crinkled texture, take your packaging and decorations to the next level. Great for Easter baskets, Christmas packaging, wedding party favor, and craft projects. Add a colorful and festive touch to any occasion",
+      "Vibrant Colors Available: Choose from a variety of vibrant colors to match your theme or event, making your presentations stand out"
+    ],
+    "price": {
+      "min": 8.99
+    },
+    "specs": {
+      "Weight": "8.5 oz (240 g)",
+      "Color": "Green",
+      "Use": "Gift basket and gift box filler"
+    }
+  },
+  {
+    "slug": "crinkle-paper-filler-4-mix-color",
+    "name": "Caonysh 8.5oz Crinkle Paper Filler for Gift Baskets Gift Boxes(4 Mix Color)",
+    "category": "gift-packaging",
+    "images": [
+      "../assets/crinkle-paper-filler-4-mix-color.jpg",
+      "../assets/crinkle-paper-filler-4-mix-color-1.jpg",
+      "../assets/crinkle-paper-filler-4-mix-color-2.jpg",
+      "../assets/crinkle-paper-filler-4-mix-color-3.jpg",
+      "../assets/crinkle-paper-filler-4-mix-color-4.jpg",
+      "../assets/crinkle-paper-filler-4-mix-color-5.jpg",
+      "../assets/crinkle-paper-filler-4-mix-color-6.jpg",
+      "../assets/crinkle-paper-filler-4-mix-color-7.jpg"
+    ],
+    "description": "Crinkle-cut shredded paper filler in a 4-color mix (blue, pink, yellow, purple), 8.5 oz, for stuffing gift baskets and gift boxes.",
+    "bullets": [
+      "Perfect Size & Weight: Our crinkle paper filler comes in a generous 8.5oz package, providing you with enough material to fill multiple small gifts baskets, boxes, or decorative items",
+      "Versatile Use: Whether you need to stuff gift baskets, cushion delicate items during shipping, or add a decorative touch to your packaging, this shredded paper is the perfect solution",
+      "Eco-Friendly Material: Made from high-quality, recyclable paper, ensuing a sustainable option for your decorative needs",
+      "Eye-Catching Appearance: Unique crinkled texture, take your packaging and decorations to the next level. Great for Easter baskets, Christmas packaging, wedding party favor, and craft projects. Add a colorful and festive touch to any occasion",
+      "Vibrant Colors Available: Choose from a variety of vibrant colors to match your theme or event, making your presentations stand out"
+    ],
+    "price": {
+      "min": 8.99
+    },
+    "specs": {
+      "Weight": "8.5 oz (240 g)",
+      "Color": "Blue, Pink, Yellow & Purple mix",
+      "Use": "Gift basket and gift box filler"
+    }
+  },
+  {
+    "slug": "crinkle-paper-filler-brown",
+    "name": "Caonysh 8.5oz Crinkle Paper Filler for Gift Baskets Gift Boxes(Brown)",
+    "category": "gift-packaging",
+    "images": [
+      "../assets/crinkle-paper-filler-brown.jpg",
+      "../assets/crinkle-paper-filler-brown-1.jpg",
+      "../assets/crinkle-paper-filler-brown-2.jpg",
+      "../assets/crinkle-paper-filler-brown-3.jpg",
+      "../assets/crinkle-paper-filler-brown-4.jpg",
+      "../assets/crinkle-paper-filler-brown-5.jpg",
+      "../assets/crinkle-paper-filler-brown-6.jpg",
+      "../assets/crinkle-paper-filler-brown-7.jpg"
+    ],
+    "description": "Crinkle-cut shredded paper filler in brown, 8.5 oz, for stuffing gift baskets and gift boxes with cushioning and decorative fill.",
+    "bullets": [
+      "Perfect Size & Weight: Our crinkle paper filler comes in a generous 8.5oz package, providing you with enough material to fill multiple small gifts baskets, boxes, or decorative items",
+      "Versatile Use: Whether you need to stuff gift baskets, cushion delicate items during shipping, or add a decorative touch to your packaging, this shredded paper is the perfect solution",
+      "Eco-Friendly Material: Made from high-quality, recyclable paper, ensuing a sustainable option for your decorative needs",
+      "Eye-Catching Appearance: Unique crinkled texture, take your packaging and decorations to the next level. Great for Easter baskets, Christmas packaging, wedding party favor, and craft projects. Add a colorful and festive touch to any occasion",
+      "Vibrant Colors Available: Choose from a variety of vibrant colors to match your theme or event, making your presentations stand out"
+    ],
+    "price": {
+      "min": 8.99
+    },
+    "specs": {
+      "Weight": "8.5 oz (240 g)",
+      "Color": "Brown",
+      "Use": "Gift basket and gift box filler"
+    }
+  },
+  {
+    "slug": "crinkle-paper-filler-navy-blue",
+    "name": "Caonysh 8.5oz Crinkle Paper Filler for Gift Baskets Gift Boxes(Navy Blue)",
+    "category": "gift-packaging",
+    "images": [
+      "../assets/crinkle-paper-filler-navy-blue.jpg",
+      "../assets/crinkle-paper-filler-navy-blue-1.jpg",
+      "../assets/crinkle-paper-filler-navy-blue-2.jpg",
+      "../assets/crinkle-paper-filler-navy-blue-3.jpg",
+      "../assets/crinkle-paper-filler-navy-blue-4.jpg",
+      "../assets/crinkle-paper-filler-navy-blue-5.jpg",
+      "../assets/crinkle-paper-filler-navy-blue-6.jpg",
+      "../assets/crinkle-paper-filler-navy-blue-7.jpg"
+    ],
+    "description": "Crinkle-cut shredded paper filler in navy blue, 8.5 oz, for stuffing gift baskets and gift boxes with cushioning and decorative fill.",
+    "bullets": [
+      "Perfect Size & Weight: Our crinkle paper filler comes in a generous 8.5oz package, providing you with enough material to fill multiple small gifts baskets, boxes, or decorative items",
+      "Versatile Use: Whether you need to stuff gift baskets, cushion delicate items during shipping, or add a decorative touch to your packaging, this shredded paper is the perfect solution",
+      "Eco-Friendly Material: Made from high-quality, recyclable paper, ensuing a sustainable option for your decorative needs",
+      "Eye-Catching Appearance: Unique crinkled texture, take your packaging and decorations to the next level. Great for Easter baskets, Christmas packaging, wedding party favor, and craft projects. Add a colorful and festive touch to any occasion",
+      "Vibrant Colors Available: Choose from a variety of vibrant colors to match your theme or event, making your presentations stand out"
+    ],
+    "price": {
+      "min": 8.99
+    },
+    "specs": {
+      "Weight": "8.5 oz (240 g)",
+      "Color": "Navy Blue",
+      "Use": "Gift basket and gift box filler"
+    }
+  },
+  {
+    "slug": "crinkle-paper-filler-blue",
+    "name": "Caonysh 8.5oz Crinkle Paper Filler for Gift Baskets Gift Boxes(Blue)",
+    "category": "gift-packaging",
+    "images": [
+      "../assets/crinkle-paper-filler-blue.jpg",
+      "../assets/crinkle-paper-filler-blue-1.jpg",
+      "../assets/crinkle-paper-filler-blue-2.jpg",
+      "../assets/crinkle-paper-filler-blue-3.jpg",
+      "../assets/crinkle-paper-filler-blue-4.jpg",
+      "../assets/crinkle-paper-filler-blue-5.jpg",
+      "../assets/crinkle-paper-filler-blue-6.jpg",
+      "../assets/crinkle-paper-filler-blue-7.jpg"
+    ],
+    "description": "Crinkle-cut shredded paper filler in blue, 8.5 oz, for stuffing gift baskets and gift boxes with cushioning and decorative fill.",
+    "bullets": [
+      "Perfect Size & Weight: Our crinkle paper filler comes in a generous 8.5oz package, providing you with enough material to fill multiple small gifts baskets, boxes, or decorative items",
+      "Versatile Use: Whether you need to stuff gift baskets, cushion delicate items during shipping, or add a decorative touch to your packaging, this shredded paper is the perfect solution",
+      "Eco-Friendly Material: Made from high-quality, recyclable paper, ensuing a sustainable option for your decorative needs",
+      "Eye-Catching Appearance: Unique crinkled texture, take your packaging and decorations to the next level. Great for Easter baskets, Christmas packaging, wedding party favor, and craft projects. Add a colorful and festive touch to any occasion",
+      "Vibrant Colors Available: Choose from a variety of vibrant colors to match your theme or event, making your presentations stand out"
+    ],
+    "price": {
+      "min": 8.99
+    },
+    "specs": {
+      "Weight": "8.5 oz (240 g)",
+      "Color": "Blue",
+      "Use": "Gift basket and gift box filler"
+    }
+  },
+  {
+    "slug": "crinkle-paper-filler-shiny-white",
+    "name": "Caonysh 8.5oz Crinkle Paper Filler for Gift Baskets Gift Boxes(Shiny White)",
+    "category": "gift-packaging",
+    "images": [
+      "../assets/crinkle-paper-filler-shiny-white.jpg",
+      "../assets/crinkle-paper-filler-shiny-white-1.jpg",
+      "../assets/crinkle-paper-filler-shiny-white-2.jpg",
+      "../assets/crinkle-paper-filler-shiny-white-3.jpg",
+      "../assets/crinkle-paper-filler-shiny-white-4.jpg",
+      "../assets/crinkle-paper-filler-shiny-white-5.jpg",
+      "../assets/crinkle-paper-filler-shiny-white-6.jpg",
+      "../assets/crinkle-paper-filler-shiny-white-7.jpg"
+    ],
+    "description": "Crinkle-cut shredded paper filler in shiny white, 8.5 oz, for stuffing gift baskets and gift boxes with cushioning and decorative fill.",
+    "bullets": [
+      "Perfect Size & Weight: Our crinkle paper filler comes in a generous 8.5oz package, providing you with enough material to fill multiple small gifts baskets, boxes, or decorative items",
+      "Versatile Use: Whether you need to stuff gift baskets, cushion delicate items during shipping, or add a decorative touch to your packaging, this shredded paper is the perfect solution",
+      "Eco-Friendly Material: Made from high-quality, recyclable paper, ensuing a sustainable option for your decorative needs",
+      "Eye-Catching Appearance: Unique crinkled texture, take your packaging and decorations to the next level. Great for Easter baskets, Christmas packaging, wedding party favor, and craft projects. Add a colorful and festive touch to any occasion",
+      "Vibrant Colors Available: Choose from a variety of vibrant colors to match your theme or event, making your presentations stand out"
+    ],
+    "price": {
+      "min": 8.99
+    },
+    "specs": {
+      "Weight": "8.5 oz (240 g)",
+      "Color": "Shiny White",
+      "Use": "Gift basket and gift box filler"
+    }
+  },
+  {
+    "slug": "crinkle-paper-filler-white-gold",
+    "name": "Caonysh 8.5oz Crinkle Paper Filler for Gift Baskets Gift Boxes(White&Gold)",
+    "category": "gift-packaging",
+    "images": [
+      "../assets/crinkle-paper-filler-white-gold.jpg",
+      "../assets/crinkle-paper-filler-white-gold-1.jpg",
+      "../assets/crinkle-paper-filler-white-gold-2.jpg",
+      "../assets/crinkle-paper-filler-white-gold-3.jpg",
+      "../assets/crinkle-paper-filler-white-gold-4.jpg",
+      "../assets/crinkle-paper-filler-white-gold-5.jpg",
+      "../assets/crinkle-paper-filler-white-gold-6.jpg",
+      "../assets/crinkle-paper-filler-white-gold-7.jpg"
+    ],
+    "description": "Crinkle-cut shredded paper filler in white & gold, 8.5 oz, for stuffing gift baskets and gift boxes with cushioning and decorative fill.",
+    "bullets": [
+      "Perfect Size & Weight: Our crinkle paper filler comes in a generous 8.5oz package, providing you with enough material to fill multiple small gifts baskets, boxes, or decorative items",
+      "Versatile Use: Whether you need to stuff gift baskets, cushion delicate items during shipping, or add a decorative touch to your packaging, this shredded paper is the perfect solution",
+      "Eco-Friendly Material: Made from high-quality, recyclable paper, ensuing a sustainable option for your decorative needs",
+      "Eye-Catching Appearance: Unique crinkled texture, take your packaging and decorations to the next level. Great for Easter baskets, Christmas packaging, wedding party favor, and craft projects. Add a colorful and festive touch to any occasion",
+      "Vibrant Colors Available: Choose from a variety of vibrant colors to match your theme or event, making your presentations stand out"
+    ],
+    "price": {
+      "min": 8.99
+    },
+    "featured": true,
+    "specs": {
+      "Weight": "8.5 oz (240 g)",
+      "Color": "White & Gold",
+      "Use": "Gift basket and gift box filler"
+    }
+  },
+  {
+    "slug": "foil-glitter-tablecloth-purple",
+    "name": "4 Pack Plastic Tablecloths Disposable Table Cover Purple 54 x 108 In",
     "category": "tablecloths",
-    "images": ["../assets/foil-glitter-tablecloths.jpg"],
-    "description": "Disposable foil-glitter plastic tablecloths for rectangle banquet tables, available in seven colors for parties, weddings, and holiday events.",
-    "price": { "min": 8.49 },
+    "images": [
+      "../assets/foil-glitter-tablecloth-purple.jpg",
+      "../assets/foil-glitter-tablecloth-purple-1.jpg",
+      "../assets/foil-glitter-tablecloth-purple-2.jpg",
+      "../assets/foil-glitter-tablecloth-purple-3.jpg",
+      "../assets/foil-glitter-tablecloth-purple-4.jpg",
+      "../assets/foil-glitter-tablecloth-purple-5.jpg",
+      "../assets/foil-glitter-tablecloth-purple-6.jpg"
+    ],
+    "description": "Purple disposable plastic tablecloths with a sparkly metallic finish, 54 x 108 in rectangle, 4 pack, for parties, weddings, and holiday events.",
+    "bullets": [
+      "Fits Most Standard Tables: Measure 54” x 108” plastic table cloth, which wide enough to cover most standard tables, rectangular tables, folding tables, buffet tables, picnic tables, provides full surface coverage and a neat drop over the edges",
+      "Value 4 Pack for Event: Sparkly metallic finish that reflects light beautifully, creating a glamorous, shimmering effect, each set includes 4 table covers, prepared for multiple events or quick table refreshes",
+      "Durable & Waterproof : Made from high-quality thick plastic, these tablecloths are spill-proof, stain-resistant, and strong enough to last through the entire celebration—indoor or outdoor",
+      "Perfect for Any Occasion : Ideal for birthday, graduation, weddings, baby showers ,girls night and themed events like disco, glam, unicorn parties decoration, New Year’s Eve, Christmas or any celebration where you want to impress with a dazzling, modern table setup",
+      "Disposable Table Cloth: Combines convenience with elegance, no need to wash or store, simple wipe spills easily or toss after use, enjoy a stylish, mess-free table setting and dispose of responsibly after your event"
+    ],
+    "price": {
+      "min": 8.49
+    },
+    "specs": {
+      "Size": "54 x 108 in (rectangle)",
+      "Pack": "4 tablecloths",
+      "Material": "Plastic, foil-glitter finish",
+      "Color": "Purple"
+    },
+    "featured": true
+  },
+  {
+    "slug": "foil-glitter-tablecloth-gold",
+    "name": "4 Pack Plastic Tablecloths Disposable Table Cover Gold 54 x 108 in",
+    "category": "tablecloths",
+    "images": [
+      "../assets/foil-glitter-tablecloth-gold.jpg",
+      "../assets/foil-glitter-tablecloth-gold-1.jpg",
+      "../assets/foil-glitter-tablecloth-gold-2.jpg",
+      "../assets/foil-glitter-tablecloth-gold-3.jpg",
+      "../assets/foil-glitter-tablecloth-gold-4.jpg",
+      "../assets/foil-glitter-tablecloth-gold-5.jpg"
+    ],
+    "description": "Gold disposable plastic tablecloths with a sparkly metallic finish, 54 x 108 in rectangle, 4 pack, for parties, weddings, and holiday events.",
+    "bullets": [
+      "Fits Most Standard Tables: Measure 54” x 108” plastic table cloth, which wide enough to cover most standard tables, rectangular tables, folding tables, buffet tables, picnic tables, provides full surface coverage and a neat drop over the edges",
+      "Value 4 Pack for Event: Sparkly metallic finish that reflects light beautifully, creating a glamorous, shimmering effect, each set includes 4 table covers, prepared for multiple events or quick table refreshes",
+      "Durable & Waterproof : Made from high-quality thick plastic, these tablecloths are spill-proof, stain-resistant, and strong enough to last through the entire celebration—indoor or outdoor",
+      "Perfect for Any Occasion : Ideal for birthday, graduation, weddings, baby showers ,girls night and themed events like disco, glam, unicorn parties decoration, New Year’s Eve, Christmas or any celebration where you want to impress with a dazzling, modern table setup",
+      "Disposable Table Cloth: Combines convenience with elegance, no need to wash or store, simple wipe spills easily or toss after use, enjoy a stylish, mess-free table setting and dispose of responsibly after your event"
+    ],
+    "price": {
+      "min": 8.49
+    },
+    "specs": {
+      "Size": "54 x 108 in (rectangle)",
+      "Pack": "4 tablecloths",
+      "Material": "Plastic, foil-glitter finish",
+      "Color": "Gold"
+    },
+    "featured": true
+  },
+  {
+    "slug": "foil-glitter-tablecloth-pink-silver",
+    "name": "4 Pack Plastic Tablecloths Disposable Table Cover Pink&Silver 54 x 108 In",
+    "category": "tablecloths",
+    "images": [
+      "../assets/foil-glitter-tablecloth-pink-silver.jpg",
+      "../assets/foil-glitter-tablecloth-pink-silver-1.jpg",
+      "../assets/foil-glitter-tablecloth-pink-silver-2.jpg",
+      "../assets/foil-glitter-tablecloth-pink-silver-3.jpg",
+      "../assets/foil-glitter-tablecloth-pink-silver-4.jpg",
+      "../assets/foil-glitter-tablecloth-pink-silver-5.jpg",
+      "../assets/foil-glitter-tablecloth-pink-silver-6.jpg"
+    ],
+    "description": "Pink & silver disposable plastic tablecloths with a sparkly metallic finish, 54 x 108 in rectangle, 4 pack, for parties, weddings, and holiday events.",
+    "bullets": [
+      "Fits Most Standard Tables: Measure 54” x 108” plastic table cloth, which wide enough to cover most standard tables, rectangular tables, folding tables, buffet tables, picnic tables, provides full surface coverage and a neat drop over the edges",
+      "Value 4 Pack for Event: Sparkly metallic finish that reflects light beautifully, creating a glamorous, shimmering effect, each set includes 4 table covers, prepared for multiple events or quick table refreshes",
+      "Durable & Waterproof : Made from high-quality thick plastic, these tablecloths are spill-proof, stain-resistant, and strong enough to last through the entire celebration—indoor or outdoor",
+      "Perfect for Any Occasion : Ideal for birthday, graduation, weddings, baby showers ,girls night and themed events like disco, glam, unicorn parties decoration, New Year’s Eve, Christmas or any celebration where you want to impress with a dazzling, modern table setup",
+      "Disposable Table Cloth: Combines convenience with elegance, no need to wash or store, simple wipe spills easily or toss after use, enjoy a stylish, mess-free table setting and dispose of responsibly after your event"
+    ],
+    "price": {
+      "min": 8.49
+    },
+    "specs": {
+      "Size": "54 x 108 in (rectangle)",
+      "Pack": "4 tablecloths",
+      "Material": "Plastic, foil-glitter finish",
+      "Color": "Pink & Silver"
+    },
+    "featured": true
+  },
+  {
+    "slug": "foil-glitter-tablecloth-black-silver",
+    "name": "4 Pack Plastic Tablecloths Disposable Table Cover Black&Silver 54 x 108 In",
+    "category": "tablecloths",
+    "images": [
+      "../assets/foil-glitter-tablecloth-black-silver.jpg",
+      "../assets/foil-glitter-tablecloth-black-silver-1.jpg",
+      "../assets/foil-glitter-tablecloth-black-silver-2.jpg",
+      "../assets/foil-glitter-tablecloth-black-silver-3.jpg",
+      "../assets/foil-glitter-tablecloth-black-silver-4.jpg",
+      "../assets/foil-glitter-tablecloth-black-silver-5.jpg",
+      "../assets/foil-glitter-tablecloth-black-silver-6.jpg"
+    ],
+    "description": "Black & silver disposable plastic tablecloths with a sparkly metallic finish, 54 x 108 in rectangle, 4 pack, for parties, weddings, and holiday events.",
+    "bullets": [
+      "Fits Most Standard Tables: Measure 54” x 108” plastic table cloth, which wide enough to cover most standard tables, rectangular tables, folding tables, buffet tables, picnic tables, provides full surface coverage and a neat drop over the edges",
+      "Value 4 Pack for Event: Sparkly metallic finish that reflects light beautifully, creating a glamorous, shimmering effect, each set includes 4 table covers, prepared for multiple events or quick table refreshes",
+      "Durable & Waterproof : Made from high-quality thick plastic, these tablecloths are spill-proof, stain-resistant, and strong enough to last through the entire celebration—indoor or outdoor",
+      "Perfect for Any Occasion : Ideal for birthday, graduation, weddings, baby showers ,girls night and themed events like disco, glam, unicorn parties decoration, New Year’s Eve, Christmas or any celebration where you want to impress with a dazzling, modern table setup",
+      "Disposable Table Cloth: Combines convenience with elegance, no need to wash or store, simple wipe spills easily or toss after use, enjoy a stylish, mess-free table setting and dispose of responsibly after your event"
+    ],
+    "price": {
+      "min": 8.49
+    },
+    "specs": {
+      "Size": "54 x 108 in (rectangle)",
+      "Pack": "4 tablecloths",
+      "Material": "Plastic, foil-glitter finish",
+      "Color": "Black & Silver"
+    },
+    "featured": true
+  },
+  {
+    "slug": "foil-glitter-tablecloth-pink",
+    "name": "4 Pack Plastic Tablecloths Disposable Table Cover Pink 54 x 108 in",
+    "category": "tablecloths",
+    "images": [
+      "../assets/foil-glitter-tablecloth-pink.jpg",
+      "../assets/foil-glitter-tablecloth-pink-1.jpg",
+      "../assets/foil-glitter-tablecloth-pink-2.jpg",
+      "../assets/foil-glitter-tablecloth-pink-3.jpg",
+      "../assets/foil-glitter-tablecloth-pink-4.jpg",
+      "../assets/foil-glitter-tablecloth-pink-5.jpg"
+    ],
+    "description": "Pink disposable plastic tablecloths with a sparkly metallic finish, 54 x 108 in rectangle, 4 pack, for parties, weddings, and holiday events.",
+    "bullets": [
+      "Fits Most Standard Tables: Measure 54” x 108” plastic table cloth, which wide enough to cover most standard tables, rectangular tables, folding tables, buffet tables, picnic tables, provides full surface coverage and a neat drop over the edges",
+      "Value 4 Pack for Event: Sparkly metallic finish that reflects light beautifully, creating a glamorous, shimmering effect, each set includes 4 table covers, prepared for multiple events or quick table refreshes",
+      "Durable & Waterproof : Made from high-quality thick plastic, these tablecloths are spill-proof, stain-resistant, and strong enough to last through the entire celebration—indoor or outdoor",
+      "Perfect for Any Occasion : Ideal for birthday, graduation, weddings, baby showers ,girls night and themed events like disco, glam, unicorn parties decoration, New Year’s Eve, Christmas or any celebration where you want to impress with a dazzling, modern table setup",
+      "Disposable Table Cloth: Combines convenience with elegance, no need to wash or store, simple wipe spills easily or toss after use, enjoy a stylish, mess-free table setting and dispose of responsibly after your event"
+    ],
+    "price": {
+      "min": 8.49
+    },
+    "specs": {
+      "Size": "54 x 108 in (rectangle)",
+      "Pack": "4 tablecloths",
+      "Material": "Plastic, foil-glitter finish",
+      "Color": "Pink"
+    },
+    "featured": true
+  },
+  {
+    "slug": "foil-glitter-tablecloth-blue",
+    "name": "4 Pack Plastic Tablecloths Disposable Table Cover Blue 54 x 108 in",
+    "category": "tablecloths",
+    "images": [
+      "../assets/foil-glitter-tablecloth-blue.jpg",
+      "../assets/foil-glitter-tablecloth-blue-1.jpg",
+      "../assets/foil-glitter-tablecloth-blue-2.jpg",
+      "../assets/foil-glitter-tablecloth-blue-3.jpg",
+      "../assets/foil-glitter-tablecloth-blue-4.jpg",
+      "../assets/foil-glitter-tablecloth-blue-5.jpg"
+    ],
+    "description": "Blue disposable plastic tablecloths with a sparkly metallic finish, 54 x 108 in rectangle, 4 pack, for parties, weddings, and holiday events.",
+    "bullets": [
+      "Fits Most Standard Tables: Measure 54” x 108” plastic table cloth, which wide enough to cover most standard tables, rectangular tables, folding tables, buffet tables, picnic tables, provides full surface coverage and a neat drop over the edges",
+      "Value 4 Pack for Event: Sparkly metallic finish that reflects light beautifully, creating a glamorous, shimmering effect, each set includes 4 table covers, prepared for multiple events or quick table refreshes",
+      "Durable & Waterproof : Made from high-quality thick plastic, these tablecloths are spill-proof, stain-resistant, and strong enough to last through the entire celebration—indoor or outdoor",
+      "Perfect for Any Occasion : Ideal for birthday, graduation, weddings, baby showers ,girls night and themed events like disco, glam, unicorn parties decoration, New Year’s Eve, Christmas or any celebration where you want to impress with a dazzling, modern table setup",
+      "Disposable Table Cloth: Combines convenience with elegance, no need to wash or store, simple wipe spills easily or toss after use, enjoy a stylish, mess-free table setting and dispose of responsibly after your event"
+    ],
+    "price": {
+      "min": 8.49
+    },
     "featured": true,
     "specs": {
       "Size": "54 x 108 in (rectangle)",
       "Pack": "4 tablecloths",
       "Material": "Plastic, foil-glitter finish",
-      "Colors": "Iridescent, Blue, Pink, Gold, Black & Silver, Pink & Silver, Purple"
+      "Color": "Blue"
     }
   },
   {
-    "slug": "crinkle-paper-filler",
-    "name": "Crinkle Paper Filler",
-    "category": "gift-packaging",
-    "images": ["../assets/crinkle-paper-filler.jpg"],
-    "description": "Crinkle-cut shredded paper filler for gift baskets and gift boxes, adding cushioning and decorative fill in white and gold.",
-    "price": { "min": 8.99 }
+    "slug": "foil-glitter-tablecloth-iridescent",
+    "name": "4 Pack Iridescent Plastic Tablecloths Disposable Table Cover 54 x 108 In",
+    "category": "tablecloths",
+    "images": [
+      "../assets/foil-glitter-tablecloth-iridescent.jpg",
+      "../assets/foil-glitter-tablecloth-iridescent-1.jpg",
+      "../assets/foil-glitter-tablecloth-iridescent-2.jpg",
+      "../assets/foil-glitter-tablecloth-iridescent-3.jpg",
+      "../assets/foil-glitter-tablecloth-iridescent-4.jpg",
+      "../assets/foil-glitter-tablecloth-iridescent-5.jpg",
+      "../assets/foil-glitter-tablecloth-iridescent-6.jpg"
+    ],
+    "description": "Iridescent disposable plastic tablecloths with a sparkly metallic finish, 54 x 108 in rectangle, 4 pack, for parties, weddings, and holiday events.",
+    "bullets": [
+      "Fits Most Standard Tables: Measure 54” x 108” plastic table cloth, which wide enough to cover most standard tables, rectangular tables, folding tables, buffet tables, picnic tables, provides full surface coverage and a neat drop over the edges",
+      "Value 4 Pack for Event: Sparkly metallic finish that reflects light beautifully, creating a glamorous, shimmering effect, each set includes 4 table covers, prepared for multiple events or quick table refreshes",
+      "Durable & Waterproof : Made from high-quality thick plastic, these tablecloths are spill-proof, stain-resistant, and strong enough to last through the entire celebration—indoor or outdoor",
+      "Perfect for Any Occasion : Ideal for birthday, graduation, weddings, baby showers ,girls night and themed events like disco, glam, unicorn parties decoration, New Year’s Eve, Christmas or any celebration where you want to impress with a dazzling, modern table setup",
+      "Disposable Table Cloth: Combines convenience with elegance, no need to wash or store, simple wipe spills easily or toss after use, enjoy a stylish, mess-free table setting and dispose of responsibly after your event"
+    ],
+    "price": {
+      "min": 7.89
+    },
+    "featured": true,
+    "specs": {
+      "Size": "54 x 108 in (rectangle)",
+      "Pack": "4 tablecloths",
+      "Material": "Plastic, iridescent foil-glitter finish",
+      "Color": "Iridescent"
+    }
   }
 ]

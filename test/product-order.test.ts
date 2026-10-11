@@ -11,11 +11,11 @@ import { readFixtureBuiltPage, withProductsFixture, removeFixtureOutDir } from '
 describe('Product display order equals Product Config file order (built HTML seam)', () => {
   test('products render in the order they appear in the JSON array', { timeout: 10 * 60 * 1000 }, () =>
     withProductsFixture('products-shuffled-order.json', (result) => {
-      // Fixture order: Plant Stake Arms, Foil Glitter Plastic Tablecloths,
-      // Crinkle Paper Filler (deliberately different from the committed
-      // config order).
+      // Fixture order: the committed config reversed — 60 PCS stakes first,
+      // 36 PCS second, red crinkle third (deliberately different from the
+      // committed config order, where the iridescent tablecloth is first).
       expect(result.failed).toBe(false);
-      const fixtureOrder = ['Plant Stake Arms', 'Foil Glitter Plastic Tablecloths', 'Crinkle Paper Filler'];
+      const fixtureOrder = ['60PCS Plant Stake Arms', '36PCS Plant Stake Arms', '(Red)'];
 
       const html = readFixtureBuiltPage('products/index.html');
       const positions = fixtureOrder.map((name) => html.indexOf(name));

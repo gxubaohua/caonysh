@@ -12,11 +12,12 @@ describe('image path validation (build process seam)', () => {
     { timeout: 10 * 60 * 1000 },
     () =>
       // Fixture: committed Product Config with a typo'd fourth image path on
-      // plant-stake-arms.
+      // plant-stake-arms-60-pcs.
       withProductsFixture('products-image-typo.json', (result) => {
         expect(result.failed).toBe(true);
-        expect(result.output).toContain('Plant Stake Arms');
-        expect(result.output).toMatch(/plant-stake-arms-typo\.jpg/);
+        // the fixture breaks the 60-pcs product, so the error names it
+        expect(result.output).toContain('60PCS Plant Stake Arms for Tomato Cage，E');
+        expect(result.output).toMatch(/plant-stake-arms-60-pcs-typo\.jpg/);
       }).then(removeFixtureOutDir),
   );
 });

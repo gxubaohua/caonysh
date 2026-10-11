@@ -13,15 +13,34 @@ import { existsSync } from 'node:fs';
 import { resolve } from 'node:path';
 
 // The full route manifest: route file -> marker content unique to that page.
+// Detail routes cover every product in the committed Product Config (ADR-0006:
+// one Product per Amazon listing variant).
 const routes: Record<string, string[]> = {
-  'index.html': ['Featured Products', 'Foil Glitter Plastic Tablecloths'],
-  'products/index.html': ['Foil Glitter Plastic Tablecloths', 'Crinkle Paper Filler', 'Plant Stake Arms'],
-  'products/tablecloths/index.html': ['Tablecloths', 'Foil Glitter Plastic Tablecloths'],
-  'products/gift-packaging/index.html': ['Gift Packaging', 'Crinkle Paper Filler'],
-  'products/garden-supplies/index.html': ['Garden Supplies', 'Plant Stake Arms'],
-  'products/p/foil-glitter-tablecloths/index.html': ['Foil Glitter Plastic Tablecloths', 'Send Inquiry'],
-  'products/p/crinkle-paper-filler/index.html': ['Crinkle Paper Filler', 'Send Inquiry'],
-  'products/p/plant-stake-arms/index.html': ['Plant Stake Arms', 'Send Inquiry'],
+  'index.html': ['Featured Products', 'Iridescent Plastic Tablecloths Disposable Table Cover'],
+  'products/index.html': ['Iridescent Plastic Tablecloths Disposable Table Cover', 'Crinkle Paper Filler for Gift Baskets Gift Boxes(White&amp;Gold)', '36PCS Plant Stake Arms for Tomato Cage'],
+  'products/tablecloths/index.html': ['Tablecloths', 'Iridescent Plastic Tablecloths Disposable Table Cover', 'Blue', 'Purple'],
+  'products/gift-packaging/index.html': ['Gift Packaging', 'Crinkle Paper Filler for Gift Baskets Gift Boxes(White&amp;Gold)', 'Navy Blue', 'Red'],
+  'products/garden-supplies/index.html': ['Garden Supplies', '36PCS Plant Stake Arms for Tomato Cage', '60PCS'],
+  'products/p/foil-glitter-tablecloth-iridescent/index.html': ['Iridescent Plastic Tablecloths Disposable Table Cover', 'Send Inquiry'],
+  'products/p/foil-glitter-tablecloth-blue/index.html': ['Table Cover Blue', 'Send Inquiry'],
+  'products/p/foil-glitter-tablecloth-pink/index.html': ['Table Cover Pink', 'Send Inquiry'],
+  'products/p/foil-glitter-tablecloth-black-silver/index.html': ['Black&amp;Silver', 'Send Inquiry'],
+  'products/p/foil-glitter-tablecloth-pink-silver/index.html': ['Pink&amp;Silver', 'Send Inquiry'],
+  'products/p/foil-glitter-tablecloth-gold/index.html': ['Table Cover Gold', 'Send Inquiry'],
+  'products/p/foil-glitter-tablecloth-purple/index.html': ['Table Cover Purple', 'Send Inquiry'],
+  'products/p/crinkle-paper-filler-white-gold/index.html': ['Crinkle Paper Filler for Gift Baskets Gift Boxes(White&amp;Gold)', 'Send Inquiry'],
+  'products/p/crinkle-paper-filler-shiny-white/index.html': ['(Shiny White)', 'Send Inquiry'],
+  'products/p/crinkle-paper-filler-blue/index.html': ['(Blue)', 'Send Inquiry'],
+  'products/p/crinkle-paper-filler-navy-blue/index.html': ['(Navy Blue)', 'Send Inquiry'],
+  'products/p/crinkle-paper-filler-brown/index.html': ['(Brown)', 'Send Inquiry'],
+  'products/p/crinkle-paper-filler-4-mix-color/index.html': ['(4 Mix Color)', 'Send Inquiry'],
+  'products/p/crinkle-paper-filler-green/index.html': ['(Green)', 'Send Inquiry'],
+  'products/p/crinkle-paper-filler-pink/index.html': ['(Pink)', 'Send Inquiry'],
+  'products/p/crinkle-paper-filler-black/index.html': ['(Black)', 'Send Inquiry'],
+  'products/p/crinkle-paper-filler-white/index.html': ['(White)', 'Send Inquiry'],
+  'products/p/crinkle-paper-filler-red/index.html': ['(Red)', 'Send Inquiry'],
+  'products/p/plant-stake-arms-36-pcs/index.html': ['36PCS Plant Stake Arms for Tomato Cage', 'Send Inquiry'],
+  'products/p/plant-stake-arms-60-pcs/index.html': ['60PCS Plant Stake Arms', 'Send Inquiry'],
   'about/index.html': ['About Caonysh'],
   'contact/index.html': ['Contact Us', 'inquiry-form'],
 };
@@ -78,9 +97,9 @@ describe('whole-site smoke (built HTML seam)', () => {
     });
 
     test('the Inquiry Prefill link on detail pages keeps the product query under the base', () => {
-      const tablecloths = pages['products/p/foil-glitter-tablecloths/index.html'];
+      const tablecloths = pages['products/p/foil-glitter-tablecloth-iridescent/index.html'];
       expect(tablecloths).toMatch(
-        new RegExp(`<a[^>]+href="${SITE_BASE}contact\\?product=Foil%20Glitter%20Plastic%20Tablecloths"`),
+        new RegExp(`<a[^>]+href="${SITE_BASE}contact\\?product=4%20Pack%20Iridescent%20Plastic%20Tablecloths%20Disposable%20Table%20Cover%2054%20x%20108%20In"`),
       );
     });
   });

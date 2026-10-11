@@ -5,23 +5,25 @@ describe('Products page grid (built HTML seam)', () => {
   const html = readBuiltPage('products/index.html');
 
   test('renders every product from the Product Config', () => {
-    expect(html).toContain('Foil Glitter Plastic Tablecloths');
-    expect(html).toContain('Crinkle Paper Filler');
-    expect(html).toContain('Plant Stake Arms');
+    expect(html).toContain('Iridescent Plastic Tablecloths Disposable Table Cover');
+    expect(html).toContain('Crinkle Paper Filler for Gift Baskets Gift Boxes(White&amp;Gold)');
+    expect(html).toContain('36PCS Plant Stake Arms for Tomato Cage');
   });
 
   test('renders a product image for every product', () => {
     expect(html).toMatch(/<img[^>]+src="[^"]+"/);
-    // three products, three grid images
+    // twenty products, twenty grid images
     const gridImages = html.match(/<img/g) ?? [];
-    expect(gridImages.length).toBeGreaterThanOrEqual(3);
+    expect(gridImages.length).toBeGreaterThanOrEqual(20);
   });
 
   test('renders every product price as an exact USD value', () => {
     // committed config: every product has a min-only price
     expect(html).toContain('$8.49');
+    expect(html).toContain('$7.89');
     expect(html).toContain('$8.99');
     expect(html).toContain('$11.99');
+    expect(html).toContain('$19.99');
   });
 
   test('renders a price range as a USD range when a product declares a max', { timeout: 10 * 60 * 1000 }, () =>

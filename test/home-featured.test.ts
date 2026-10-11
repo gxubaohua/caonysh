@@ -19,10 +19,10 @@ describe('Home page selling points and Featured Products (built HTML seam)', () 
 
   test('renders the Featured Product section with the featured products from the Product Config', () => {
     expect(html).toMatch(/Featured Products?/i);
-    // all three products are marked featured in the committed config
-    expect(html).toContain('Foil Glitter Plastic Tablecloths');
-    expect(html).toContain('Crinkle Paper Filler');
-    expect(html).toContain('Plant Stake Arms');
+    // nine products are marked featured in the committed config (one per listing, ADR-0006)
+    expect(html).toContain('Iridescent Plastic Tablecloths Disposable Table Cover');
+    expect(html).toContain('Crinkle Paper Filler for Gift Baskets Gift Boxes(White&amp;Gold)');
+    expect(html).toContain('36PCS Plant Stake Arms for Tomato Cage');
   });
 
   test('renders no Featured section when no product is marked featured', { timeout: 420_000 }, () =>
@@ -30,7 +30,7 @@ describe('Home page selling points and Featured Products (built HTML seam)', () 
       expect(result.failed).toBe(false);
       const rebuiltHome = readFixtureBuiltPage('index.html');
       expect(rebuiltHome).not.toMatch(/Featured Products?/i);
-      expect(rebuiltHome).not.toContain('Foil Glitter Plastic Tablecloths');
+      expect(rebuiltHome).not.toContain('Iridescent Plastic Tablecloths Disposable Table Cover');
     }).then(removeFixtureOutDir),
   );
 });
