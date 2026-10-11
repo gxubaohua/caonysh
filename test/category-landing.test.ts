@@ -1,7 +1,24 @@
 import { describe, expect, test } from 'vitest';
 import { readBuiltPage } from './helpers';
+import { SITE_BASE } from './site-base';
 
 describe('Category landing pages (built HTML seam)', () => {
+  // Fix 3 (review): landing pages render inside BaseLayout, so the grid
+  // styles (.product-grid) resolve and the pages carry site nav/footer.
+  test('landing pages adopt the BaseLayout shell: nav and footer furniture', () => {
+    const bearings = readBuiltPage('products/bearings/index.html');
+    expect(bearings).toMatch(new RegExp(`<a[^>]+href="${SITE_BASE}products/"`));
+    expect(bearings).toMatch(new RegExp(`<a[^>]+href="${SITE_BASE}about/"`));
+    expect(bearings).toMatch(new RegExp(`<a[^>]+href="${SITE_BASE}contact/"`));
+    expect(bearings).toMatch(/<footer[^>]*>[\s\S]*service@caonysh\.com[\s\S]*<\/footer>/);
+  });
+
+  test('landing page grid renders with the shared product grid styles', () => {
+    const bearings = readBuiltPage('products/bearings/index.html');
+    expect(bearings).toMatch(/class="[^"]*\bproduct-grid\b[^"]*"/);
+    expect(bearings).toMatch(/\.product-grid\s*\{/);
+  });
+
   test('gives every non-empty category a landing page at /products/<category>/', () => {
     const bearings = readBuiltPage('products/bearings/index.html');
     const fasteners = readBuiltPage('products/fasteners/index.html');
@@ -33,7 +50,9 @@ describe('Category landing pages (built HTML seam)', () => {
   test('renders no description copy when the category has none', () => {
     const fasteners = readBuiltPage('products/fasteners/index.html');
     expect(fasteners).not.toMatch(/class="category-description"/);
-  });  test('uses a category-specific page title', () => {
+  });
+
+  test('uses a category-specific page title', () => {
     const bearings = readBuiltPage('products/bearings/index.html');
     const fasteners = readBuiltPage('products/fasteners/index.html');
     expect(bearings).toMatch(/<title>Bearings \| Caonysh<\/title>/);

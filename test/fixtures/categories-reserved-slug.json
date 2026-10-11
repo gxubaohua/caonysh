@@ -1,0 +1,20 @@
+[
+  {
+    "slug": "bearings",
+    "name": "Bearings",
+    "description": "Precision ball and roller bearings for industrial machinery, sealed for long service life."
+  },
+  {
+    "slug": "fasteners",
+    "name": "Fasteners"
+  },
+  {
+    "slug": "gaskets",
+    "name": "Gaskets",
+    "description": "Flat and ring gaskets cut from sheet materials for sealing in industrial assemblies."
+  },
+  {
+    "slug": "p",
+    "name": "Rotary Seals"
+  }
+]

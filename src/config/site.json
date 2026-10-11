@@ -1,4 +1,7 @@
 {
   "companyName": "Caonysh",
-  "contactEmail": "service@caonysh.com"
+  "contactEmail": "service@caonysh.com",
+  "analytics": {
+    "id": null
+  }
 }

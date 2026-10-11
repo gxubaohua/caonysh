@@ -23,3 +23,5 @@
 **详情页 URL 形态决定：`/products/item/<slug>/`**。理由：GLOSSARY 钉死分类落地页为 `/products/<category-slug>/`，若用 `/products/<category>/<slug>/` 则详情页 URL 依赖分类 slug，商品换分类会破坏外链（Google 已收录的详情 URL 失效）；`/products/item/<slug>/` 与分类路由零冲突，商品 slug 全局唯一，URL 稳定不随分类变化。
 
 关键文件：`src/pages/products/item/[slug].astro`（详情页路由）、`src/components/ProductGallery.astro`（图廊）、`src/components/SpecTable.astro`（Specs 表）、`scripts/generate-placeholder-images.mjs`（图廊占位图变体生成）、`src/content/products.json`（fixture 多图+specs）、`test/product-detail.test.ts`（11 个用例）。
+
+- [评审修复 v2] 详情页 URL 变更：`/products/item/<slug>/` → `/products/p/<slug>/`（评审裁定 "item" 命中 GLOSSARY Product 的 _Avoid: Item_；`p` 为无领域含义的保留路径段，分类 slug `p` 已被 Category Config 校验禁止以防路由冲突）。

@@ -102,3 +102,7 @@ Caonysh 需要一个面向海外买家的线上门面，让客户能发现商品
 - 相关 ADR：0001（静态 JSON 数据源）、0002（询盘站形态）、0003（Web3Forms 转发）、0004（构建校验与排序）。
 - 上线前置的人类操作（建 GitHub 仓库、开 Pages、生成 Web3Forms access key）由 `/wizard` 阶段处理，不在本 spec 的工单内。
 - 商品规模假设：几十个商品 / 3~6 个分类 / 每商品 3~8 张图。
+
+## Comments
+
+- 评审修复完成（2026-10-11，分支 `ticket/review-fixes`）：修复项 1 ProductCard 可点击进详情页、2 详情页 URL `item`→`p`（Avoid 词违规）、3 分类落地页与详情页套 BaseLayout、4 price 键缺失走两态、5 Site Config 预留分析 ID 配置位、6 测试 fixture 替换逻辑收拢进 test/helpers.ts、7 两态价格字面量收拢进 formatPrice、8 validate-config 汇成单一校验入口并消除循环 import、9 images 路径存在性校验（错误点名商品）。
