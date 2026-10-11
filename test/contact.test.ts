@@ -3,7 +3,7 @@
 // no Web3Forms network submission is tested, only the form markup and
 // the inline client scripts shipped in the page.
 import { describe, expect, test } from 'vitest';
-import { readBuiltPage } from './helpers';
+import { readBuiltPage, pageTitle, metaDescription } from './helpers';
 
 describe('Contact page (built HTML seam)', () => {
   const html = readBuiltPage('contact/index.html');
@@ -76,11 +76,3 @@ describe('Contact page (built HTML seam)', () => {
     expect(html).toMatch(/api\.web3forms\.com/);
   });
 });
-
-function pageTitle(html: string): string | null {
-  return html.match(/<title>([^<]+)<\/title>/)?.[1] ?? null;
-}
-
-function metaDescription(html: string): string | null {
-  return html.match(/<meta[^>]+name="description"[^>]+content="([^"]*)"/)?.[1] ?? null;
-}

@@ -1,63 +1,34 @@
-import { describe, expect, test } from 'vitest';
-import { execFileSync } from 'node:child_process';
-import { readFileSync, writeFileSync, existsSync, rmSync } from 'node:fs';
-import { resolve } from 'node:path';
-import { projectRoot } from './helpers';
-
 // Build-config validation for categories, tested through the real build:
 // a Product referencing a category slug that Category Config does not define
 // is a config error — the build must fail and name the offending product
 // (spec: "build fails, error names the offending product", ADR-0004).
-// The broken fixture is injected temporarily and restored afterwards; the
-// throwaway build writes to a scratch outDir so dist/ stays intact.
-// A full build is slow (Windows + npx cold start), hence the generous timeout.
-const productsJsonPath = resolve(projectRoot, 'src/content/products.json');
-const originalProductsJson = readFileSync(productsJsonPath, 'utf8');
-const BUILD_TIMEOUT_MS = 10 * 60 * 1000;
-
-function runBuild(outDir: string): { status: number; stderr: string } {
-  try {
-    execFileSync('npx', ['astro', 'build', '--outDir', outDir], {
-      cwd: projectRoot,
-      shell: process.platform === 'win32',
-      stdio: 'pipe',
-    });
-    return { status: 0, stderr: '' };
-  } catch (error) {
-    const err = error as { status?: number; stderr?: Buffer | string };
-    return {
-      status: err.status ?? 1,
-      stderr: (err.stderr ? err.stderr.toString() : '') + String((error as Error).message ?? ''),
-    };
-  }
-}
+// The broken fixture is injected temporarily and restored afterwards via
+// git; the throwaway build writes to the shared isolated outDir
+// (helpers.FIXTURE_OUT_DIR) so dist/ stays intact. A full build is slow
+// (Windows + npx cold start), hence the generous timeout.
+import { describe, expect, test } from 'vitest';
+import { readFileSync } from 'node:fs';
+import { resolve } from 'node:path';
+import { projectRoot, withProductsFixture, removeFixtureOutDir } from './helpers';
 
 describe('Build validation: product references an undefined category (built HTML seam)', () => {
-  const outDir = resolve(projectRoot, 'dist-validation-run');
-
   test(
     'fails the build naming the offending product when a category slug is not defined in Category Config',
-    () => {
-      const broken = JSON.parse(originalProductsJson) as Array<{ category: string }>;
-      broken[0].category = 'no-such-category';
-      try {
-        writeFileSync(productsJsonPath, JSON.stringify(broken, null, 2));
-        const result = runBuild(outDir);
-        expect(result.status).not.toBe(0);
-        expect(result.stderr).toContain('Steel Ball Bearing');
-        expect(result.stderr.toLowerCase()).toContain('category');
-      } finally {
-        writeFileSync(productsJsonPath, originalProductsJson);
-        if (existsSync(outDir)) {
-          rmSync(outDir, { recursive: true, force: true });
-        }
-      }
-    },
-    BUILD_TIMEOUT_MS,
+    { timeout: 10 * 60 * 1000 },
+    () =>
+      withProductsFixture('products-undefined-category.json', (result) => {
+        expect(result.failed).toBe(true);
+        expect(result.output).toContain('Steel Ball Bearing');
+        expect(result.output.toLowerCase()).toContain('category');
+      }).then(removeFixtureOutDir),
   );
 
-  // Guard: the fixture restore worked and the original config is intact.
+  // Guard: the fixture restore worked and the committed config is intact.
   test('restores the Product Config fixture after the failure test', () => {
-    expect(readFileSync(productsJsonPath, 'utf8')).toBe(originalProductsJson);
+    const original = readFileSync(resolve(projectRoot, 'test/fixtures/products-undefined-category.json'), 'utf8');
+    const restored = readFileSync(resolve(projectRoot, 'src/content/products.json'), 'utf8');
+    // The restored live config must not contain the fixture's broken category.
+    expect(restored).not.toBe(original);
+    expect(JSON.parse(restored)[0].category).toBe('bearings');
   });
 });

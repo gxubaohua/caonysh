@@ -4,21 +4,13 @@
 // email, per-page title/meta description, and unique titles/descriptions
 // across pages (user stories 11, 13, 19; GLOSSARY: Site Config).
 import { describe, expect, test } from 'vitest';
-import { readBuiltPage } from './helpers';
+import { readBuiltPage, pageTitle, metaDescription } from './helpers';
 import { SITE_BASE } from './site-base';
 
 const home = readBuiltPage('index.html');
 const products = readBuiltPage('products/index.html');
 const about = readBuiltPage('about/index.html');
 const pages: Record<string, string> = { home, products, about };
-
-function pageTitle(html: string): string | null {
-  return html.match(/<title>([^<]+)<\/title>/)?.[1] ?? null;
-}
-
-function metaDescription(html: string): string | null {
-  return html.match(/<meta[^>]+name="description"[^>]+content="([^"]*)"/)?.[1] ?? null;
-}
 
 describe('site-wide layout shell (built HTML seam)', () => {
   for (const [pageName, html] of Object.entries(pages)) {
