@@ -1,5 +1,5 @@
 import { describe, expect, test } from 'vitest';
-import { readBuiltPage } from './helpers';
+import { readBuiltPage, readFixtureBuiltPage, withProductsFixture, removeFixtureOutDir } from './helpers';
 import { SITE_BASE } from './site-base';
 
 describe('Product detail page (built HTML seam)', () => {
@@ -49,13 +49,23 @@ describe('Product detail page (built HTML seam)', () => {
     expect(tablecloths).toMatch(/<input[^>]*type="radio"[^>]*checked/);
   });
 
-  test('renders a price range for a product with min and max price', () => {
-    const tablecloths = readBuiltPage('products/p/foil-glitter-tablecloths/index.html');
-    expect(tablecloths).toContain('$7.98');
-    expect(tablecloths).toContain('$8.49');
-  });
+  test('renders a price range for a product with min and max price', { timeout: 10 * 60 * 1000 }, () =>
+    // The committed config has no min–max product, so the range rendering on
+    // the detail page is covered through the fixture-seam pattern: swap a
+    // config with a range in, rebuild into the isolated outDir, assert,
+    // restore.
+    withProductsFixture('products-price-range.json', (result) => {
+      expect(result.failed).toBe(false);
+      const stakeArms = readFixtureBuiltPage('products/p/plant-stake-arms/index.html');
+      expect(stakeArms).toContain('$9.99');
+      expect(stakeArms).toContain('$14.99');
+    }).then(removeFixtureOutDir),
+  );
 
   test('renders an exact USD price for a product with only a min price', () => {
+    const tablecloths = readBuiltPage('products/p/foil-glitter-tablecloths/index.html');
+    expect(tablecloths).toContain('$8.49');
+
     const filler = readBuiltPage('products/p/crinkle-paper-filler/index.html');
     expect(filler).toContain('$8.99');
   });

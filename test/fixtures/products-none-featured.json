@@ -5,7 +5,7 @@
     "category": "tablecloths",
     "images": ["../assets/foil-glitter-tablecloths.jpg"],
     "description": "Disposable foil-glitter plastic tablecloths for rectangle banquet tables, available in seven colors for parties, weddings, and holiday events.",
-    "price": { "min": 7.98, "max": 8.49 },
+    "price": { "min": 8.49 },
     "featured": false,
     "specs": {
       "Size": "54 x 108 in (rectangle)",
