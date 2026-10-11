@@ -24,6 +24,17 @@ const year = new Date().getFullYear();
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    {
+      // Analytics reserved slot (spec story 29, user story 29): Site Config
+      // carries a future analytics ID, default null — nothing is installed,
+      // no script ships. When an ID is configured, an implementation goes
+      // here (and only here).
+      site.analytics?.id == null ? (
+        <Fragment set:html="<!-- analytics reserved slot: no analytics id configured -->" />
+      ) : (
+        <script is:inline data-analytics-id={site.analytics.id} />
+      )
+    }
   </head>
   <body>
     <header class="site-header">

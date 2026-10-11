@@ -35,8 +35,11 @@ A few rules the build enforces:
   build fails and names the offending product.
 - Images live in `src/assets/` and are compressed to WebP automatically at
   build time.
-- Leave `price` as `null` to show "Contact for price" instead of a number.
+- Leave `price` as `null` (or remove the key) to show "Contact for price"
+  instead of a number.
 - A category with no products is hidden from the site automatically.
+- Category slugs must not be `p` — that segment is reserved for product
+  detail pages (`/products/p/<slug>/`).
 
 ## Configuration
 

@@ -19,10 +19,10 @@ const routes: Record<string, string[]> = {
   'products/bearings/index.html': ['Bearings', 'Steel Ball Bearing'],
   'products/fasteners/index.html': ['Fasteners', 'Stainless Steel Hex Nut', 'Nylon Spacer'],
   'products/gaskets/index.html': ['Gaskets', 'Nitrile Rubber Gasket'],
-  'products/item/steel-ball-bearing/index.html': ['Steel Ball Bearing', 'Send Inquiry'],
-  'products/item/stainless-steel-hex-nut/index.html': ['Stainless Steel Hex Nut', 'Send Inquiry'],
-  'products/item/nylon-spacer/index.html': ['Nylon Spacer', 'Send Inquiry'],
-  'products/item/nitrile-rubber-gasket/index.html': ['Nitrile Rubber Gasket', 'Send Inquiry'],
+  'products/p/steel-ball-bearing/index.html': ['Steel Ball Bearing', 'Send Inquiry'],
+  'products/p/stainless-steel-hex-nut/index.html': ['Stainless Steel Hex Nut', 'Send Inquiry'],
+  'products/p/nylon-spacer/index.html': ['Nylon Spacer', 'Send Inquiry'],
+  'products/p/nitrile-rubber-gasket/index.html': ['Nitrile Rubber Gasket', 'Send Inquiry'],
   'about/index.html': ['About Caonysh'],
   'contact/index.html': ['Contact Us', 'inquiry-form'],
 };
@@ -74,7 +74,7 @@ describe('whole-site smoke (built HTML seam)', () => {
     });
 
     test('the Inquiry Prefill link on detail pages keeps the product query under the base', () => {
-      const bearing = pages['products/item/steel-ball-bearing/index.html'];
+      const bearing = pages['products/p/steel-ball-bearing/index.html'];
       expect(bearing).toMatch(new RegExp(`<a[^>]+href="${SITE_BASE}contact\\?product=Steel%20Ball%20Bearing"`));
     });
   });

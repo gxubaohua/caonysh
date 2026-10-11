@@ -1,15 +1,17 @@
 ---
-// Renders one product in the grid: image, name, price. Price is the two-state
-// Price Strategy from GLOSSARY/ADR-0004: a filled value (exact or USD range)
-// or empty (renders "Contact for price").
+// Renders one product in the grid: image, name, price. The whole card is a
+// link to the product detail page at /products/p/<slug>/ (spec user story 5).
+// Price is the two-state Price Strategy from GLOSSARY/ADR-0004: a filled
+// value (exact or USD range) or empty — including a missing price key —
+// renders "Contact for price" via formatPrice.
 import { type Product, formatPrice } from '../lib/products';
 import { getImage } from 'astro:assets';
 import { productImages } from '../lib/images';
+import { sitePath } from '../lib/site-path';
 
 interface Props {
   product: Product;
 }
-
 const { product } = Astro.props;
 const imagePath = product.images[0];
 const image = productImages[imagePath];
@@ -19,12 +21,12 @@ const optimized = await getImage({
   width: 400,
   formats: ['webp'],
 });
+
+const detailHref = sitePath(`/products/p/${product.slug}/`);
 ---
 
-<article class="product-card">
+<a class="product-card" href={detailHref}>
   <img src={optimized.src} alt={product.name} width={optimized.options.width} height={optimized.options.height} loading="lazy" />
   <h2>{product.name}</h2>
-  <p class="price">
-    {product.price === null ? 'Contact for price' : formatPrice(product.price)}
-  </p>
-</article>
+  <p class="price">{formatPrice(product.price)}</p>
+</a>

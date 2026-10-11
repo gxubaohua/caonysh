@@ -2,7 +2,11 @@
 // Product detail page: gallery, description, two-state price, MOQ, Specs
 // table, and an Inquiry button that links to the Contact page carrying the
 // product name as the Inquiry Prefill query parameter (GLOSSARY: Inquiry
-// Prefill; ADR-0003).
+// Prefill; ADR-0003). Shell furniture (nav, footer, meta) comes from
+// BaseLayout; the route lives at /products/p/<slug>/ — "p" is a reserved
+// non-domain segment so the URL avoids the GLOSSARY _Avoid: Item_ term and
+// never collides with category landing routes (/products/<category-slug>/).
+import BaseLayout from '../../../layouts/BaseLayout.astro';
 import site from '../../../config/site.json';
 import { products, formatPrice } from '../../../lib/products';
 import ProductGallery from '../../../components/ProductGallery.astro';
@@ -23,29 +27,12 @@ const { product } = Astro.props;
 const inquiryHref = sitePath(`/contact?product=${encodeURIComponent(product.name)}`);
 ---
 
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{product.name} | {site.companyName}</title>
-    <meta name="description" content={product.description} />
-  </head>
-  <body>
-    <header>
-      <a href={sitePath('/')}>{site.companyName}</a>
-    </header>
-
-    <main>
-      <h1>{product.name}</h1>
-      <ProductGallery product={product} />
-      <p>{product.description}</p>
-      <p class="price">
-        {product.price === null ? 'Contact for price' : formatPrice(product.price)}
-      </p>
-      {product.moq != null && <p class="moq">MOQ: {product.moq.toLocaleString('en-US')}</p>}
-      <SpecTable product={product} />
-      <a class="inquiry-button" href={inquiryHref}>Send Inquiry</a>
-    </main>
-  </body>
-</html>
+<BaseLayout title={`${product.name} | ${site.companyName}`} description={product.description}>
+  <h1>{product.name}</h1>
+  <ProductGallery product={product} />
+  <p>{product.description}</p>
+  <p class="price">{formatPrice(product.price)}</p>
+  {product.moq != null && <p class="moq">MOQ: {product.moq.toLocaleString('en-US')}</p>}
+  <SpecTable product={product} />
+  <a class="inquiry-button" href={inquiryHref}>Send Inquiry</a>
+</BaseLayout>

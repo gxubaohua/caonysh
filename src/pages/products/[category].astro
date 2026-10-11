@@ -1,11 +1,14 @@
 ---
+// One landing page per non-empty Category at /products/<category-slug>/
+// (ADR-0004). Empty categories get no route here. Shell furniture (nav,
+// footer, meta) comes from BaseLayout, so the product grid shares the site
+// styles and the page keeps full navigation. Category slug "p" never
+// reaches here: validate-config.ts rejects it (reserved for detail routes).
+import BaseLayout from '../../layouts/BaseLayout.astro';
 import site from '../../config/site.json';
 import { nonEmptyCategories, categoryBySlug, productsInCategory } from '../../lib/categories';
 import ProductCard from '../../components/ProductCard.astro';
-import { sitePath } from '../../lib/site-path';
 
-// One landing page per non-empty Category at /products/<category-slug>/
-// (ADR-0004). Empty categories get no route here.
 export function getStaticPaths() {
   return nonEmptyCategories.map((category) => ({
     params: { category: category.slug },
@@ -15,40 +18,22 @@ export function getStaticPaths() {
 const { category } = Astro.params;
 const categoryConfig = categoryBySlug(category!);
 const categoryProducts = productsInCategory(category!);
+
+const title = `${categoryConfig!.name} | ${site.companyName}`;
+const description = categoryConfig!.description
+  ? `${categoryConfig!.description} Browse ${categoryConfig!.name} from ${site.companyName} and send an inquiry.`
+  : `Browse ${categoryConfig!.name} from ${site.companyName} and send an inquiry.`;
 ---
 
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{categoryConfig!.name} | {site.companyName}</title>
-    <meta
-      name="description"
-      content={categoryConfig!.description
-        ? `${categoryConfig!.description} Browse ${categoryConfig!.name} from ${site.companyName} and send an inquiry.`
-        : `Browse ${categoryConfig!.name} from ${site.companyName} and send an inquiry.`}
-    />
-  </head>
-  <body>
-    <header>
-      <a href={sitePath('/')}>{site.companyName}</a>
-      <nav>
-        <a href={sitePath('/products/')}>Products</a>
-      </nav>
-    </header>
+<BaseLayout title={title} description={description}>
+  <h1>{categoryConfig!.name}</h1>
+  {categoryConfig!.description && <p class="category-description">{categoryConfig!.description}</p>}
 
-    <main>
-      <h1>{categoryConfig!.name}</h1>
-      {categoryConfig!.description && <p class="category-description">{categoryConfig!.description}</p>}
-
-      <ul class="product-grid">
-        {categoryProducts.map((product) => (
-          <li>
-            <ProductCard product={product} />
-          </li>
-        ))}
-      </ul>
-    </main>
-  </body>
-</html>
+  <ul class="product-grid">
+    {categoryProducts.map((product) => (
+      <li>
+        <ProductCard product={product} />
+      </li>
+    ))}
+  </ul>
+</BaseLayout>
