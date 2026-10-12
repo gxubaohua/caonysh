@@ -1,12 +1,15 @@
 // Site path helper: single source for URL prefixes under the deploy base.
-// The site is a GitHub Pages *project* site served at
-// https://gxubaohua.github.io/caonysh/ — every root-absolute URL the pages emit
-// (navigation, category filter, Inquiry Prefill link) must carry that base
-// prefix, or the deployed pages 404. Astro applies the base automatically to
-// astro:assets URLs but NOT to hand-written hrefs, so every internal link in
-// templates goes through sitePath() (GLOSSARY: Deploy). BASE_URL is Vite's
-// injection of the resolved astro base, so this stays correct in local dev
-// (base '/') and in the Pages-targeted build (base '/caonysh/').
+// The site is served at the root of its custom domain
+// https://www.caonysh.com/ (GitHub Pages + custom domain), so the deploy base
+// is '/'. Every root-absolute URL the pages emit (navigation, category
+// filter, Inquiry Prefill link) still goes through sitePath() — it keeps the
+// prefix correct in local dev too, and stays correct automatically if the
+// deploy base ever changes again (e.g. back to a project-site prefix). Astro
+// applies the base automatically to astro:assets URLs but NOT to hand-written
+// hrefs, so every internal link in templates goes through sitePath()
+// (GLOSSARY: Deploy). BASE_URL is Vite's injection of the resolved astro
+// base, so this stays correct in local dev (base '/') and in the
+// Pages-targeted build (base '/').
 const base = import.meta.env.BASE_URL ?? '/';
 
 /**

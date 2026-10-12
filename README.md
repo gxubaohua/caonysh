@@ -5,9 +5,9 @@ B2B product showcase and inquiry site for overseas buyers. Fully static:
 repository at build time, and inquiries are forwarded to the company inbox
 via [Web3Forms](https://web3forms.com). No backend, no database.
 
-Deployed to GitHub Pages at <https://gxubaohua.github.io/caonysh/> — a push to
-`main` builds and deploys the site automatically via GitHub Actions
-(`.github/workflows/deploy.yml`).
+Deployed to GitHub Pages at <https://www.caonysh.com/> (custom domain, served
+from the domain root) — a push to `main` builds and deploys the site
+automatically via GitHub Actions (`.github/workflows/deploy.yml`).
 
 ## Commands
 
