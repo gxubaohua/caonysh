@@ -1,6 +1,6 @@
 // Site path helper: single source for URL prefixes under the deploy base.
 // The site is a GitHub Pages *project* site served at
-// https://johoka.github.io/caonysh/ — every root-absolute URL the pages emit
+// https://gxubaohua.github.io/caonysh/ — every root-absolute URL the pages emit
 // (navigation, category filter, Inquiry Prefill link) must carry that base
 // prefix, or the deployed pages 404. Astro applies the base automatically to
 // astro:assets URLs but NOT to hand-written hrefs, so every internal link in

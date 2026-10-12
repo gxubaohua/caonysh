@@ -31,7 +31,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 - **校验发生在模块加载**：`src/lib/validate-config.ts` 是唯一的共享校验入口，由 `products.ts` 在模块加载时触发——商品缺图、图片路径拼写错、引用未定义分类、分类 slug 撞上保留段 `p`，都会让构建失败并点名问题条目。新的校验规则加在这个文件。import 保持无环：它只读原始 JSON 与 `lib/images.ts`，不 import 读取层。
 - **测试接缝只有构建产物 HTML**：断言渲染出的标记（内容、链接、meta），不测组件内部结构与辅助函数。"换入 fixture 配置 → 重建到 `dist-fixture/` → 断言 → 恢复提交版配置"已封装为 `test/helpers.ts` 的 `withProductsFixture` / `withCategoriesFixture`，新测试直接复用。
-- **部署 base 前缀**：站点挂在 `https://johoka.github.io/caonysh/`，`astro:assets` 的 URL 自动带 base，但模板里手写的 `href` 一律经 `src/lib/site-path.ts` 的 `sitePath()`——直接写 `/products/` 在本地 dev 正常、部署后 404。
+- **部署 base 前缀**：站点挂在 `https://gxubaohua.github.io/caonysh/`，`astro:assets` 的 URL 自动带 base，但模板里手写的 `href` 一律经 `src/lib/site-path.ts` 的 `sitePath()`——直接写 `/products/` 在本地 dev 正常、部署后 404。
 - **展示顺序 = 配置文件内数组顺序**：商品、精选（featured）、分类都按文件顺序渲染，没有 order 字段，读取层不做重排。
 - **价格两态**：`price: { min, max? }` 或空（null 与缺键等价）→ 渲染 "Contact for price"。展示统一走 `products.ts` 的 `formatPrice()`。
 - **路由**：`/products/<category-slug>/` 分类落地页（空分类构建时整体隐藏：无路由、无筛选入口）；`/products/p/<slug>/` 商品详情页，`p` 为保留段。
